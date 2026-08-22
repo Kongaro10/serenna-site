@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Produto | Serenna</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="container navbar">
+
+        <a href="index.html" class="logo">
+
+            <img src="assets/img/logo/logo.png">
+
+            <h1>Serenna</h1>
+
+        </a>
+
+        <nav>
+
+            <ul class="menu">
+
+                <li><a href="categoria.html?categoria=cadernos">Cadernos</a></li>
+                <li><a href="categoria.html?categoria=planners">Planners</a></li>
+                <li><a href="categoria.html?categoria=agendas">Agendas</a></li>
+
+            </ul>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<section>
+
+<div class="container">
+
+<div class="produto-page">
+
+<div class="produto-imagem">
+
+<img id="imagemPrincipal" src="">
+
+</div>
+
+<div class="produto-info">
+
+<h2 id="nomeProduto"></h2>
+
+<p id="descricaoProduto"></p>
+
+<br>
+
+<h3 id="precoProduto"></h3>
+
+<hr>
+
+<div id="personalizacao"></div>
+
+<br>
+
+<label>
+
+Nome para personalização
+
+</label>
+
+<input
+type="text"
+id="nomePersonalizado"
+placeholder="Digite o nome">
+
+<br><br>
+
+<h2 id="valorFinal"></h2>
+
+<br>
+
+<button
+class="btn btn-primary"
+onclick="enviarWhatsApp()">
+
+Pedir pelo WhatsApp
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="assets/js/produtos.js"></script>
+<script src="assets/js/script.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const id = params.get("id");
+
+const produto = buscarProduto(id);
+
+document.getElementById("imagemPrincipal").src =
+produto.imagens[0];
+
+document.getElementById("nomeProduto").innerHTML =
+produto.nome;
+
+document.getElementById("descricaoProduto").innerHTML =
+produto.descricao;
+
+let valor = produto.precoBase;
+
+const personalizacao =
+document.getElementById("personalizacao");
+
+for(let grupo in produto.opcoes){
+
+    let html = `<h4>${grupo.toUpperCase()}</h4>`;
+
+    produto.opcoes[grupo].forEach((item,index)=>{
+
+        html += `
+
+<label>
+
+<input
+
+type="radio"
+
+name="${grupo}"
+
+value="${item.valor}"
+
+${index==0 ? "checked":""}
+
+onchange="atualizarPreco()">
+
+${item.nome}
+
+(+ ${formatarPreco(item.valor)})
+
+</label>
+
+<br>
+
+`;
+
+    });
+
+    html+="<br>";
+
+    personalizacao.innerHTML += html;
+
+}
+
+function atualizarPreco(){
+
+valor = produto.precoBase;
+
+const radios =
+document.querySelectorAll("input[type=radio]:checked");
+
+radios.forEach(r=>{
+
+valor += Number(r.value);
+
+});
+
+document.getElementById("precoProduto").innerHTML =
+formatarPreco(produto.precoBase);
+
+document.getElementById("valorFinal").innerHTML =
+"Total: "+formatarPreco(valor);
+
+}
+
+atualizarPreco();
+
+function enviarWhatsApp(){
+
+const nome =
+document.getElementById("nomePersonalizado").value;
+
+let mensagem =
+
+`Olá!
+
+Gostaria de encomendar:
+
+*${produto.nome}*
+
+`;
+
+const radios =
+document.querySelectorAll("input[type=radio]:checked");
+
+radios.forEach(r=>{
+
+mensagem += `${r.name}: ${r.parentElement.innerText}\n`;
+
+});
+
+mensagem += `
+
+Nome personalizado: ${nome}
+
+Valor: ${formatarPreco(valor)}
+
+`;
+
+const numero = "55SEUNUMERO";
+
+window.open(
+
+`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
+
+"_blank"
+
+);
+
+}
+
+</script>
+
+</body>
+
+</html>

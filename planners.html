@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Planners</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- =====================================================
+         AJUSTE EXCLUSIVO DA PÁGINA DE PLANNERS
+         5 produtos na mesma linha
+    ====================================================== -->
+
+    <style>
+
+        .pagina-planners .produtos-grid {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+
+        .pagina-planners .produto-imagem img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* Tablet */
+
+        @media (max-width: 1100px) {
+
+            .pagina-planners .produtos-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* Celular */
+
+        @media (max-width: 700px) {
+
+            .pagina-planners .produtos-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cadernos.html">
+                    Cadernos
+                </a>
+
+                <a href="planners.html">
+                    Planners
+                </a>
+
+                <a href="agendas.html">
+                    Agendas
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="pagina-planners">
+
+
+        <!-- =========================
+             CABEÇALHO DA PÁGINA
+        ========================== -->
+
+        <section class="pagina-produtos">
+
+            <div class="container">
+
+                <div class="pagina-produtos-titulo">
+
+                    <span>
+                        COLEÇÃO SERENNA
+                    </span>
+
+                    <h1>
+                        Planners
+                    </h1>
+
+                    <p>
+                        Escolha o modelo que mais combina com você.
+                        Todos os nossos planners são produzidos
+                        artesanalmente e podem ser personalizados.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================
+                     PRODUTOS
+                ========================== -->
+
+                <div class="produtos-grid">
+
+
+                    <!-- PLANNER ARGOLADO -->
+
+                    <a
+                        href="planner-argolado.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/planners/argolado/destaque.jpg"
+                                alt="Planner Argolado"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Planner Argolado
+                            </h2>
+
+                            <p>
+                                Prático e personalizável para
+                                organizar sua rotina do seu jeito.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PLANNER BROCHURA -->
+
+                    <a
+                        href="planner-brochura.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/planners/brochura/destaque.jpg"
+                                alt="Planner Brochura"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Planner Brochura
+                            </h2>
+
+                            <p>
+                                Um modelo clássico e delicado
+                                para acompanhar seus dias.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PLANNER WIRE-O -->
+
+                    <a
+                        href="planner-wire-o.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/planners/wire-o/destaque.jpg"
+                                alt="Planner Wire-o"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Planner Wire-o
+                            </h2>
+
+                            <p>
+                                Leve, funcional e confortável
+                                para planejar sua rotina.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PLANNER SLIM -->
+
+                    <a
+                        href="planner-slim.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/planners/slim/destaque.jpg"
+                                alt="Planner Slim"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Planner Slim
+                            </h2>
+
+                            <p>
+                                Compacto e prático para levar
+                                organização para todos os lugares.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PLANNER MENSAL -->
+
+                    <a
+                        href="planner-mensal.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/planners/mensal/destaque.jpg"
+                                alt="Planner Mensal"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Planner Mensal
+                            </h2>
+
+                            <p>
+                                Uma visão prática do mês para
+                                organizar compromissos e prioridades.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-contato">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

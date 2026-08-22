@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Cadernos</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- =====================================================
+         AJUSTE EXCLUSIVO DA PÁGINA DE CADERNOS
+         4 produtos na mesma linha
+    ====================================================== -->
+
+    <style>
+
+        .produtos-grid {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 20px;
+        }
+
+
+        /* Tablet */
+
+        @media (max-width: 900px) {
+
+            .produtos-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* Celular */
+
+        @media (max-width: 600px) {
+
+            .produtos-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cadernos.html">
+                    Cadernos
+                </a>
+
+                <a href="planners.html">
+                    Planners
+                </a>
+
+                <a href="agendas.html">
+                    Agendas
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- =========================
+             CABEÇALHO DA PÁGINA
+        ========================== -->
+
+        <section class="pagina-produtos">
+
+            <div class="container">
+
+                <div class="pagina-produtos-titulo">
+
+                    <span>
+                        COLEÇÃO SERENNA
+                    </span>
+
+                    <h1>
+                        Cadernos
+                    </h1>
+
+                    <p>
+                        Escolha o modelo que mais combina com você.
+                        Todos os nossos cadernos são produzidos
+                        artesanalmente e podem ser personalizados.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================
+                     PRODUTOS
+                ========================== -->
+
+                <div class="produtos-grid">
+
+
+                    <!-- CADERNO BROCHURA -->
+
+                    <a
+                        href="caderno-brochura.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/cadernos/brochura/destaque.jpg"
+                                alt="Caderno Brochura"
+                            >
+
+                        </div>
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Caderno Brochura
+                            </h2>
+
+                            <p>
+                                Um modelo clássico, delicado e
+                                versátil para acompanhar sua rotina.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CADERNO ARGOLADO -->
+
+                    <a
+                        href="caderno-argolado.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/cadernos/argolado/destaque.jpg"
+                                alt="Caderno Argolado"
+                            >
+
+                        </div>
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Caderno Argolado
+                            </h2>
+
+                            <p>
+                                Prático, personalizável e ideal para
+                                organizar suas folhas do seu jeito.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CADERNO WIRE-O -->
+
+                    <a
+                        href="caderno-wire-o.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/cadernos/wire-o/destaque.jpg"
+                                alt="Caderno Wire-o"
+                            >
+
+                        </div>
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Caderno Wire-o
+                            </h2>
+
+                            <p>
+                                Leve, funcional e confortável para
+                                escrever, estudar e planejar.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CADERNO FICHÁRIO -->
+
+                    <a
+                        href="caderno-fichario.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/cadernos/fichario/destaque.jpg"
+                                alt="Caderno tipo Fichário"
+                            >
+
+                        </div>
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Caderno tipo Fichário
+                            </h2>
+
+                            <p>
+                                Flexível e reutilizável, pensado para
+                                quem gosta de reorganizar tudo.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-contato">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>

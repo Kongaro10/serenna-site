@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Capas</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- =====================================================
+         ESTILO EXCLUSIVO DA PÁGINA DE CAPAS
+         Não altera as outras páginas do site
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           PÁGINA DE CAPAS
+        ====================================================== */
+
+        .pagina-capas {
+            padding: 70px 0 90px;
+            background: #fff;
+        }
+
+
+        /* =====================================================
+           TÍTULO
+        ====================================================== */
+
+        .pagina-capas-titulo {
+            text-align: center;
+            max-width: 850px;
+            margin: 0 auto 55px;
+        }
+
+        .pagina-capas-titulo span {
+            display: block;
+
+            margin-bottom: 12px;
+
+            color: #d9a6a0;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .pagina-capas-titulo h1 {
+            margin: 0 0 18px;
+
+            color: #704b47;
+
+            font-size: 48px;
+            line-height: 1.15;
+        }
+
+        .pagina-capas-titulo p {
+            margin: 0 auto;
+
+            max-width: 700px;
+
+            color: #666;
+
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           GALERIA
+        ====================================================== */
+
+        .capas-painel {
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+
+            gap: 30px;
+        }
+
+
+        /* =====================================================
+           CARD DA CAPA
+        ====================================================== */
+
+        .capa-card {
+            background: #fff;
+
+            border: 1px solid #ead6d1;
+
+            border-radius: 0;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition:
+                transform .25s ease,
+                box-shadow .25s ease,
+                border-color .25s ease;
+        }
+
+        .capa-card:hover {
+            transform: translateY(-5px);
+
+            border-color: #d9aaa2;
+
+            box-shadow: 0 12px 30px rgba(112, 75, 71, .12);
+        }
+
+
+        /* =====================================================
+           IMAGEM
+        ====================================================== */
+
+        .capa-imagem {
+            width: 100%;
+
+            background: #f8f4f2;
+
+            overflow: hidden;
+        }
+
+        .capa-imagem img {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            transition: transform .35s ease;
+        }
+
+        .capa-card:hover .capa-imagem img {
+            transform: scale(1.025);
+        }
+
+
+        /* =====================================================
+           INFORMAÇÕES
+        ====================================================== */
+
+        .capa-info {
+            padding: 18px 20px 20px;
+
+            text-align: center;
+        }
+
+        .capa-numero {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: #d4a098;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            letter-spacing: 1px;
+        }
+
+        .capa-nome {
+            margin: 0;
+
+            color: #704b47;
+
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+
+        /* =====================================================
+           MODAL / VISUALIZAÇÃO AMPLIADA
+        ====================================================== */
+
+        .modal-capa {
+            display: none;
+
+            position: fixed;
+
+            z-index: 9999;
+
+            inset: 0;
+
+            background: rgba(55, 39, 37, .88);
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 30px;
+        }
+
+        .modal-capa.aberto {
+            display: flex;
+        }
+
+        .modal-conteudo {
+            position: relative;
+
+            max-width: 900px;
+            max-height: 92vh;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-conteudo img {
+            display: block;
+
+            max-width: 100%;
+            max-height: 88vh;
+
+            object-fit: contain;
+
+            box-shadow: 0 20px 60px rgba(0,0,0,.35);
+        }
+
+        .modal-fechar {
+            position: absolute;
+
+            top: -45px;
+            right: 0;
+
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: white;
+
+            color: #704b47;
+
+            font-size: 24px;
+            line-height: 1;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           RESPONSIVO
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .pagina-capas {
+                padding: 55px 0 70px;
+            }
+
+            .pagina-capas-titulo h1 {
+                font-size: 40px;
+            }
+
+            .capas-painel {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+
+                gap: 22px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .pagina-capas {
+                padding: 40px 0 60px;
+            }
+
+            .pagina-capas-titulo {
+                width: 90%;
+
+                margin-bottom: 35px;
+            }
+
+            .pagina-capas-titulo span {
+                font-size: 12px;
+            }
+
+            .pagina-capas-titulo h1 {
+                font-size: 32px;
+            }
+
+            .pagina-capas-titulo p {
+                font-size: 16px;
+            }
+
+            .capas-painel {
+                width: 90%;
+
+                grid-template-columns: 1fr;
+
+                gap: 22px;
+            }
+
+            .capa-nome {
+                font-size: 19px;
+            }
+
+            .modal-capa {
+                padding: 20px;
+            }
+
+            .modal-fechar {
+                top: -45px;
+                right: 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         CABEÇALHO
+    ====================================================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cadernos.html">
+                    Cadernos
+                </a>
+
+                <a href="planners.html">
+                    Planners
+                </a>
+
+                <a href="agendas.html">
+                    Agendas
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
+
+    <main>
+
+
+        <section class="pagina-capas">
+
+            <div class="pagina-capas-titulo">
+
+                <span>
+                    COLEÇÃO SERENNA
+                </span>
+
+                <h1>
+                    Escolha a capa que combina com você
+                </h1>
+
+                <p>
+                    Cada capa foi criada para trazer personalidade
+                    aos seus momentos de organização. Conheça
+                    todas as opções disponíveis para personalizar
+                    seus produtos Serenna.
+                </p>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PAINEL DE CAPAS
+            ================================================== -->
+
+            <div class="capas-painel">
+
+
+                <!-- CAPA 01 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0001.jpg',
+                        'Harmonia'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0001.jpg"
+                            alt="Harmonia"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            01
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Harmonia
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 02 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0002.jpg',
+                        'Delicadeza em Flores'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0002.jpg"
+                            alt="Delicadeza em Flores"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            02
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Delicadeza em Flores
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 03 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0003.jpg',
+                        'Toque de Serenidade'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0003.jpg"
+                            alt="Toque de Serenidade"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            03
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Toque de Serenidade
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 04 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0004.jpg',
+                        'Alma Leve'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0004.jpg"
+                            alt="Alma Leve"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            04
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Alma Leve
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 05 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0005.jpg',
+                        'Jardim de Afeto'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0005.jpg"
+                            alt="Jardim de Afeto"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            05
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Jardim de Afeto
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 06 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0006.jpg',
+                        'Entre Pétalas'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0006.jpg"
+                            alt="Entre Pétalas"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            06
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Entre Pétalas
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 07 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0007.jpg',
+                        'Traços de Calma'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0007.jpg"
+                            alt="Traços de Calma"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            07
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Traços de Calma
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 08 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0008.jpg',
+                        'Brisa de Primavera'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0008.jpg"
+                            alt="Brisa de Primavera"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            08
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Brisa de Primavera
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 09 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0009.jpg',
+                        'Suspiro de Luz'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0009.jpg"
+                            alt="Suspiro de Luz"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            09
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Suspiro de Luz
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 10 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0010.jpg',
+                        'Essência Suave'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0010.jpg"
+                            alt="Essência Suave"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            10
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Essência Suave
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 11 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0011.jpg',
+                        'Instantes'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0011.jpg"
+                            alt="Instantes"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            11
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Instantes
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 12 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0012.jpg',
+                        'Amor Colorido'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0012.jpg"
+                            alt="Amor Colorido"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            12
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Amor Colorido
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 13 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0013.jpg',
+                        'Encanto Floral'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0013.jpg"
+                            alt="Encanto Floral"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            13
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Encanto Floral
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 14 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0014.jpg',
+                        'Doce Rotina'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0014.jpg"
+                            alt="Doce Rotina"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            14
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Doce Rotina
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- CAPA 15 -->
+
+                <article
+                    class="capa-card"
+                    onclick="abrirCapa(
+                        'assets/img/capas/0015.jpg',
+                        'Meu Signo'
+                    )"
+                >
+
+                    <div class="capa-imagem">
+
+                        <img
+                            src="assets/img/capas/0015.jpg"
+                            alt="Meu Signo"
+                            loading="lazy"
+                        >
+
+                    </div>
+
+                    <div class="capa-info">
+
+                        <span class="capa-numero">
+                            15
+                        </span>
+
+                        <h2 class="capa-nome">
+                            Meu Signo
+                        </h2>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         MODAL DA CAPA
+    ====================================================== -->
+
+    <div
+        class="modal-capa"
+        id="modalCapa"
+        onclick="fecharCapa(event)"
+    >
+
+        <div class="modal-conteudo">
+
+            <button
+                type="button"
+                class="modal-fechar"
+                onclick="fecharModal()"
+                aria-label="Fechar"
+            >
+                ×
+            </button>
+
+            <img
+                id="imagemModal"
+                src=""
+                alt=""
+            >
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         RODAPÉ
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-contato">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT DA PÁGINA
+    ====================================================== -->
+
+    <script>
+
+        function abrirCapa(imagem, nome) {
+
+            const modal =
+                document.getElementById("modalCapa");
+
+            const imagemModal =
+                document.getElementById("imagemModal");
+
+            imagemModal.src = imagem;
+
+            imagemModal.alt = nome;
+
+            modal.classList.add("aberto");
+
+            document.body.style.overflow = "hidden";
+
+        }
+
+
+        function fecharModal() {
+
+            const modal =
+                document.getElementById("modalCapa");
+
+            modal.classList.remove("aberto");
+
+            document.body.style.overflow = "";
+
+        }
+
+
+        function fecharCapa(event) {
+
+            if (
+                event.target ===
+                document.getElementById("modalCapa")
+            ) {
+
+                fecharModal();
+
+            }
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Escape") {
+
+                    fecharModal();
+
+                }
+
+            }
+        );
+
+    </script>
+
+
+</body>
+
+</html>

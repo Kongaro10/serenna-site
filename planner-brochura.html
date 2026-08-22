@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Planner Brochura</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+
+        /* =====================================================
+           PÁGINA DO PRODUTO
+        ===================================================== */
+
+        .produto-pagina {
+            background: var(--fundo);
+            padding: 45px 0 80px;
+        }
+
+        .produto-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* =====================================================
+           CAMINHO
+        ===================================================== */
+
+        .breadcrumb {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .breadcrumb a {
+            color: var(--marrom);
+            text-decoration: none;
+        }
+
+        /* =====================================================
+           PRODUTO
+        ===================================================== */
+
+        .produto-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        /* =====================================================
+           GALERIA
+        ===================================================== */
+
+        .galeria {
+            min-width: 0;
+        }
+
+        .imagem-principal {
+            width: 100%;
+            max-width: 620px;
+            aspect-ratio: 1 / 1;
+            margin: auto;
+
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+
+            box-shadow: 0 12px 35px rgba(0,0,0,.08);
+        }
+
+        .imagem-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .miniaturas {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .miniatura {
+            flex: 0 0 78px;
+            height: 78px;
+
+            border: 2px solid transparent;
+            border-radius: 12px;
+
+            overflow: hidden;
+            background: white;
+
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .miniatura.ativa {
+            border-color: var(--rosa);
+        }
+
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* =====================================================
+           INFORMAÇÕES
+        ===================================================== */
+
+        .produto-info {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 12px 35px rgba(0,0,0,.06);
+        }
+
+        .produto-categoria {
+            display: block;
+
+            color: var(--rosa);
+
+            font-size: 13px;
+            font-weight: 700;
+
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            margin-bottom: 10px;
+        }
+
+        .produto-info h1 {
+            font-size: 36px;
+            line-height: 1.15;
+
+            color: var(--marrom);
+
+            margin-bottom: 12px;
+        }
+
+        .produto-descricao {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .produto-preco {
+            font-size: 27px;
+            font-weight: 700;
+            color: var(--marrom);
+            margin-bottom: 5px;
+        }
+
+        .frete-aviso {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        /* =====================================================
+           CARACTERÍSTICAS
+        ===================================================== */
+
+        .caracteristicas {
+            margin-bottom: 28px;
+        }
+
+        .caracteristica {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            padding: 11px 0;
+
+            border-bottom: 1px solid #eee;
+
+            font-size: 14px;
+        }
+
+        .caracteristica strong {
+            color: var(--marrom);
+        }
+
+        .caracteristica span {
+            color: #666;
+            text-align: right;
+        }
+
+        /* =====================================================
+           OPÇÕES
+        ===================================================== */
+
+        .opcao {
+            margin-bottom: 25px;
+        }
+
+        .opcao-titulo {
+            display: block;
+
+            color: var(--marrom);
+
+            font-size: 15px;
+            font-weight: 700;
+
+            margin-bottom: 10px;
+        }
+
+        .opcao-subtexto {
+            display: block;
+
+            color: #777;
+
+            font-size: 13px;
+
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        /* =====================================================
+           BOTÕES DE OPÇÃO
+        ===================================================== */
+
+        .opcoes-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .opcao-radio {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .opcao-radio + label {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+
+            background: white;
+
+            color: var(--marrom);
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .opcao-radio:checked + label {
+            background: var(--marrom);
+            border-color: var(--marrom);
+            color: white;
+        }
+
+        /* =====================================================
+           CAPAS
+        ===================================================== */
+
+        .capas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .capa-opcao {
+            position: relative;
+        }
+
+        .capa-opcao input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .capa-opcao label {
+            display: block;
+
+            border: 2px solid transparent;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+            background: white;
+
+            transition: .2s;
+        }
+
+        .capa-opcao label img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            object-fit: cover;
+            display: block;
+        }
+
+        .capa-opcao input:checked + label {
+            border-color: var(--marrom);
+        }
+
+        .numero-capa {
+            text-align: center;
+
+            font-size: 11px;
+
+            padding: 4px 0;
+
+            color: var(--marrom);
+        }
+
+        /* =====================================================
+           CAMPOS
+        ===================================================== */
+
+        .campo {
+            width: 100%;
+
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+
+            padding: 13px 14px;
+
+            font-family: inherit;
+            font-size: 15px;
+
+            color: var(--texto);
+
+            outline: none;
+            background: white;
+        }
+
+        .campo:focus {
+            border-color: var(--rosa);
+        }
+
+        .campo::placeholder {
+            color: #aaa;
+        }
+
+        .campo-ajuda {
+            display: block;
+
+            margin-top: 6px;
+
+            font-size: 12px;
+
+            color: #888;
+        }
+
+        /* =====================================================
+           BOTÃO WHATSAPP
+        ===================================================== */
+
+        .botao-whatsapp {
+            width: 100%;
+
+            border: none;
+
+            background: var(--marrom);
+            color: white;
+
+            padding: 16px 20px;
+
+            border-radius: 50px;
+
+            font-family: inherit;
+
+            font-size: 16px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: .3s;
+        }
+
+        .botao-whatsapp:hover {
+            background: var(--rosa);
+            color: var(--marrom);
+        }
+
+        .aviso-pedido {
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #888;
+
+            margin-top: 12px;
+
+            line-height: 1.5;
+        }
+
+        /* =====================================================
+           RESPONSIVO
+        ===================================================== */
+
+        @media (max-width: 850px) {
+
+            .produto-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .imagem-principal {
+                max-width: 600px;
+            }
+
+            .produto-info {
+                padding: 25px;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .produto-pagina {
+                padding: 25px 0 55px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+                margin-bottom: 18px;
+            }
+
+            .produto-info h1 {
+                font-size: 28px;
+            }
+
+            .produto-preco {
+                font-size: 24px;
+            }
+
+            .capas-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 9px;
+            }
+
+            .miniatura {
+                flex-basis: 68px;
+                height: 68px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     CABEÇALHO
+===================================================== -->
+
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a href="index.html" class="logo-link">
+
+            <img
+                src="assets/img/logo/logo-site.png"
+                alt="SerennA"
+                class="logo-site"
+            >
+
+        </a>
+
+
+        <nav class="menu">
+
+            <a href="cadernos.html">
+                Cadernos
+            </a>
+
+            <a href="planners.html">
+                Planners
+            </a>
+
+            <a href="agendas.html">
+                Agendas
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     PRODUTO
+===================================================== -->
+
+<main class="produto-pagina">
+
+    <div class="produto-container">
+
+
+        <!-- CAMINHO -->
+
+        <div class="breadcrumb">
+
+            <a href="index.html">
+                Início
+            </a>
+
+            <span>›</span>
+
+            <a href="planners.html">
+                Planners
+            </a>
+
+            <span>›</span>
+
+            <span>
+                Planner Brochura
+            </span>
+
+        </div>
+
+
+        <div class="produto-layout">
+
+
+            <!-- =================================================
+                 GALERIA
+            ================================================== -->
+
+            <div class="galeria">
+
+                <div class="imagem-principal">
+
+                    <img
+                        id="imagemPrincipal"
+                        src="assets/img/produtos/planners/brochura/Destaque.jpg"
+                        alt="Planner Brochura"
+                    >
+
+                </div>
+
+
+                <div class="miniaturas">
+
+                    <button
+                        type="button"
+                        class="miniatura ativa"
+                        onclick="trocarImagem(this, 'assets/img/produtos/planners/brochura/Destaque.jpg')"
+                    >
+
+                        <img
+                            src="assets/img/produtos/planners/brochura/Destaque.jpg"
+                            alt="Planner Brochura"
+                        >
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="miniatura"
+                        onclick="trocarImagem(this, 'assets/img/produtos/planners/brochura/Img 1.jpg')"
+                    >
+
+                        <img
+                            src="assets/img/produtos/planners/brochura/Img 1.jpg"
+                            alt="Planner Brochura aberto"
+                        >
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="miniatura"
+                        onclick="trocarImagem(this, 'assets/img/produtos/planners/brochura/Img 2.jpg')"
+                    >
+
+                        <img
+                            src="assets/img/produtos/planners/brochura/Img 2.jpg"
+                            alt="Planner Brochura"
+                        >
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 INFORMAÇÕES
+            ================================================== -->
+
+            <div class="produto-info">
+
+
+                <span class="produto-categoria">
+                    Planners
+                </span>
+
+
+                <h1>
+                    Planner Brochura
+                </h1>
+
+
+                <p class="produto-descricao">
+
+                    Um planner completo, elegante e pensado para
+                    acompanhar sua rotina durante todo o ano.
+                    Com formato permanente, você pode começar
+                    a utilizá-lo na data que fizer mais sentido
+                    para você.
+
+                </p>
+
+
+                <p class="produto-descricao">
+
+                    Costurado à mão e com capa dura, ele reúne
+                    todas as ferramentas essenciais para organizar
+                    diferentes áreas da sua vida em um único lugar.
+
+                </p>
+
+
+                <p class="produto-descricao">
+
+                    Além do planejamento semanal, você pode
+                    acompanhar suas finanças, organizar projetos,
+                    planejar viagens, registrar seus objetivos e
+                    visualizar o ano de forma completa.
+
+                </p>
+
+
+                <div class="produto-preco">
+
+                    R$ 105,40
+
+                </div>
+
+
+                <div class="frete-aviso">
+
+                    Frete calculado posteriormente de acordo
+                    com o CEP informado.
+
+                </div>
+
+
+                <!-- =================================================
+                     CARACTERÍSTICAS
+                ================================================== -->
+
+                <div class="caracteristicas">
+
+
+                    <div class="caracteristica">
+
+                        <strong>
+                            Tamanho
+                        </strong>
+
+                        <span>
+                            A5
+                        </span>
+
+                    </div>
+
+
+                    <div class="caracteristica">
+
+                        <strong>
+                            Encadernação
+                        </strong>
+
+                        <span>
+                            Costurado à mão
+                        </span>
+
+                    </div>
+
+
+                    <div class="caracteristica">
+
+                        <strong>
+                            Formato
+                        </strong>
+
+                        <span>
+                            Permanente
+                        </span>
+
+                    </div>
+
+
+                    <div class="caracteristica">
+
+                        <strong>
+                            Capa
+                        </strong>
+
+                        <span>
+                            Dura
+                        </span>
+
+                    </div>
+
+
+                    <div class="caracteristica">
+
+                        <strong>
+                            Ferramentas
+                        </strong>
+
+                        <span>
+                            Planner completo
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     LAYOUT SEMANAL
+                ================================================== -->
+
+                <div class="opcao">
+
+                    <span class="opcao-titulo">
+                        Escolha o layout das páginas semanais *
+                    </span>
+
+                    <span class="opcao-subtexto">
+                        Escolha o formato que melhor combina
+                        com a sua maneira de planejar.
+                    </span>
+
+
+                    <div class="opcoes-botoes">
+
+                        <input
+                            type="radio"
+                            class="opcao-radio"
+                            name="layout"
+                            id="layoutVertical"
+                            value="Vertical"
+                            checked
+                        >
+
+                        <label for="layoutVertical">
+                            Vertical
+                        </label>
+
+
+                        <input
+                            type="radio"
+                            class="opcao-radio"
+                            name="layout"
+                            id="layoutHorizontal"
+                            value="Horizontal"
+                        >
+
+                        <label for="layoutHorizontal">
+                            Horizontal
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CAPAS
+                ================================================== -->
+
+                <div class="opcao">
+
+                    <span class="opcao-titulo">
+                        Escolha sua capa *
+                    </span>
+
+                    <span class="opcao-subtexto">
+                        A escolha da capa não altera o valor do produto.
+                    </span>
+
+
+                    <div class="capas-grid">
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa01" value="01" checked>
+                            <label for="capa01">
+                                <img src="assets/img/capas/0001.jpg" alt="Capa 01">
+                                <div class="numero-capa">01</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa02" value="02">
+                            <label for="capa02">
+                                <img src="assets/img/capas/0002.jpg" alt="Capa 02">
+                                <div class="numero-capa">02</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa03" value="03">
+                            <label for="capa03">
+                                <img src="assets/img/capas/0003.jpg" alt="Capa 03">
+                                <div class="numero-capa">03</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa04" value="04">
+                            <label for="capa04">
+                                <img src="assets/img/capas/0004.jpg" alt="Capa 04">
+                                <div class="numero-capa">04</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa05" value="05">
+                            <label for="capa05">
+                                <img src="assets/img/capas/0005.jpg" alt="Capa 05">
+                                <div class="numero-capa">05</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa06" value="06">
+                            <label for="capa06">
+                                <img src="assets/img/capas/0006.jpg" alt="Capa 06">
+                                <div class="numero-capa">06</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa07" value="07">
+                            <label for="capa07">
+                                <img src="assets/img/capas/0007.jpg" alt="Capa 07">
+                                <div class="numero-capa">07</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa08" value="08">
+                            <label for="capa08">
+                                <img src="assets/img/capas/0008.jpg" alt="Capa 08">
+                                <div class="numero-capa">08</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa09" value="09">
+                            <label for="capa09">
+                                <img src="assets/img/capas/0009.jpg" alt="Capa 09">
+                                <div class="numero-capa">09</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa10" value="10">
+                            <label for="capa10">
+                                <img src="assets/img/capas/0010.jpg" alt="Capa 10">
+                                <div class="numero-capa">10</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa11" value="11">
+                            <label for="capa11">
+                                <img src="assets/img/capas/0011.jpg" alt="Capa 11">
+                                <div class="numero-capa">11</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa12" value="12">
+                            <label for="capa12">
+                                <img src="assets/img/capas/0012.jpg" alt="Capa 12">
+                                <div class="numero-capa">12</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa13" value="13">
+                            <label for="capa13">
+                                <img src="assets/img/capas/0013.jpg" alt="Capa 13">
+                                <div class="numero-capa">13</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa14" value="14">
+                            <label for="capa14">
+                                <img src="assets/img/capas/0014.jpg" alt="Capa 14">
+                                <div class="numero-capa">14</div>
+                            </label>
+                        </div>
+
+
+                        <div class="capa-opcao">
+                            <input type="radio" name="capa" id="capa15" value="15">
+                            <label for="capa15">
+                                <img src="assets/img/capas/0015.jpg" alt="Capa 15">
+                                <div class="numero-capa">15</div>
+                            </label>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PERSONALIZAÇÃO
+                ================================================== -->
+
+                <div class="opcao">
+
+                    <label
+                        class="opcao-titulo"
+                        for="nomePersonalizacao"
+                    >
+                        Nome para personalização
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nomePersonalizacao"
+                        class="campo"
+                        maxlength="50"
+                        placeholder="Digite o nome que deseja na capa"
+                    >
+
+                    <span class="campo-ajuda">
+                        Opcional
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     CEP
+                ================================================== -->
+
+                <div class="opcao">
+
+                    <label
+                        class="opcao-titulo"
+                        for="cep"
+                    >
+                        CEP para cálculo do frete *
+                    </label>
+
+                    <input
+                        type="text"
+                        id="cep"
+                        class="campo"
+                        maxlength="9"
+                        inputmode="numeric"
+                        placeholder="00000-000"
+                        oninput="formatarCEP(this)"
+                    >
+
+                    <span class="campo-ajuda">
+                        O valor do frete será informado posteriormente.
+                    </span>
+
+                </div>
+
+
+                <!-- =================================================
+                     BOTÃO
+                ================================================== -->
+
+                <button
+                    type="button"
+                    class="botao-whatsapp"
+                    onclick="enviarWhatsApp()"
+                >
+                    Pedir pelo WhatsApp
+                </button>
+
+
+                <p class="aviso-pedido">
+                    Você será direcionada ao WhatsApp com
+                    todas as informações do seu pedido.
+                </p>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     RODAPÉ
+===================================================== -->
+
+<footer class="site-footer">
+
+    <div class="container footer-grid">
+
+
+        <div class="footer-marca">
+
+            <img
+                src="assets/img/logo/logo.png"
+                alt="SerennA"
+                class="footer-logo"
+            >
+
+            <p>
+                Papelaria feita para desacelerar.
+                Criando produtos personalizados que
+                transformam momentos simples em
+                experiências especiais.
+            </p>
+
+        </div>
+
+
+        <div class="footer-contato">
+
+            <h3>
+                Contato
+            </h3>
+
+            <a
+                href="https://wa.me/5511994485595"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp
+            </a>
+
+            <a
+                href="https://instagram.com/serennapapelaria"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                @serennapapelaria
+            </a>
+
+            <a href="mailto:serennapapelaria@gmail.com">
+                serennapapelaria@gmail.com
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 SerennA Papelaria · Todos os direitos reservados.
+        </p>
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+    /* =====================================================
+       GALERIA
+    ===================================================== */
+
+    function trocarImagem(botao, imagem) {
+
+        document.getElementById("imagemPrincipal").src = imagem;
+
+        document.querySelectorAll(".miniatura").forEach(function(item) {
+
+            item.classList.remove("ativa");
+
+        });
+
+        botao.classList.add("ativa");
+
+    }
+
+
+    /* =====================================================
+       CEP
+    ===================================================== */
+
+    function formatarCEP(campo) {
+
+        let valor = campo.value.replace(/\D/g, "");
+
+        if (valor.length > 5) {
+
+            valor =
+                valor.substring(0, 5)
+                + "-"
+                + valor.substring(5, 8);
+
+        }
+
+        campo.value = valor;
+
+    }
+
+
+    /* =====================================================
+       WHATSAPP
+    ===================================================== */
+
+    function enviarWhatsApp() {
+
+        const capa =
+            document.querySelector(
+                'input[name="capa"]:checked'
+            );
+
+        const layout =
+            document.querySelector(
+                'input[name="layout"]:checked'
+            );
+
+        const nome =
+            document
+                .getElementById("nomePersonalizacao")
+                .value
+                .trim();
+
+        const cep =
+            document
+                .getElementById("cep")
+                .value
+                .trim();
+
+
+        if (!layout) {
+
+            alert("Escolha o layout das páginas semanais.");
+
+            return;
+
+        }
+
+
+        if (!capa) {
+
+            alert("Escolha uma das 15 capas.");
+
+            return;
+
+        }
+
+
+        if (
+            !cep ||
+            cep.replace(/\D/g, "").length !== 8
+        ) {
+
+            alert(
+                "Informe um CEP válido para calcularmos o frete."
+            );
+
+            document
+                .getElementById("cep")
+                .focus();
+
+            return;
+
+        }
+
+
+        const nomeFinal =
+            nome || "Não informado";
+
+
+        const mensagem =
+
+`Olá! Gostaria de solicitar um Planner Brochura.
+
+Produto: Planner Brochura
+Tamanho: A5
+Encadernação: Costurado à mão
+Formato: Permanente
+Capa: Dura
+Layout das páginas semanais: ${layout.value}
+Capa escolhida: ${capa.value}
+Nome para personalização: ${nomeFinal}
+
+Ferramentas:
+- Controle financeiro
+- Calendário mensal
+- Planejador anual
+- Rastreador anual
+- Planejamento de viagens
+- Organização de projetos
+- Lista de desejos
+
+CEP: ${cep}
+
+Valor do produto: R$ 105,40
+Frete: a informar posteriormente.`;
+
+
+        const telefone =
+            "5511994485595";
+
+
+        const url =
+            "https://wa.me/"
+            + telefone
+            + "?text="
+            + encodeURIComponent(mensagem);
+
+
+        window.open(
+            url,
+            "_blank"
+        );
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

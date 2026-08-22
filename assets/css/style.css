@@ -1,0 +1,1734 @@
+/* =========================================================
+   SERENNΑ PAPELARIA
+   STYLE.CSS — PÁGINA INICIAL
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+
+    --rosa: #FFB6B0;
+    --marrom: #754C4A;
+    --salvia: #9CBCB7;
+    --agua: #CDF1ED;
+
+    --fundo: #FAF9F7;
+    --texto: #3D3535;
+
+    --footer: #D4B2A3;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   CONTAINER
+========================================================= */
+
+.container {
+
+    width: 90%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   CABEÇALHO
+========================================================= */
+
+.site-header {
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #ece7e5;
+
+    position: relative;
+    z-index: 10;
+}
+
+.header-inner {
+
+    min-height: 120px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 40px;
+}
+
+
+/* LOGO */
+
+.logo-link {
+
+    display: block;
+
+    text-decoration: none;
+
+    flex-shrink: 0;
+}
+
+.logo-site {
+
+    width: 240px;
+
+    height: auto;
+}
+
+
+/* MENU */
+
+.menu {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 42px;
+}
+
+.menu a {
+
+    text-decoration: none;
+
+    color: var(--texto);
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    transition: color 0.25s ease;
+}
+
+.menu a:hover {
+
+    color: var(--rosa);
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    padding: 55px 0 65px;
+
+    background: var(--fundo);
+}
+
+.hero-grid {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 70px;
+}
+
+
+/* TEXTO */
+
+.subtitulo {
+
+    display: block;
+
+    margin-bottom: 20px;
+
+    color: var(--rosa);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.hero h1 {
+
+    max-width: 650px;
+
+    margin-bottom: 25px;
+
+    color: var(--marrom);
+
+    font-size: 56px;
+
+    line-height: 1.08;
+
+    font-weight: 700;
+}
+
+.hero-text p {
+
+    max-width: 650px;
+
+    margin-bottom: 38px;
+
+    color: #666;
+
+    font-size: 20px;
+
+    line-height: 1.65;
+}
+
+
+/* BOTÃO */
+
+.botao {
+
+    display: inline-block;
+
+    padding: 16px 38px;
+
+    border-radius: 50px;
+
+    background: var(--marrom);
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.botao:hover {
+
+    background: var(--rosa);
+
+    color: var(--marrom);
+
+    transform: translateY(-2px);
+}
+
+
+/* IMAGEM HERO */
+
+.hero-image img {
+
+    width: 100%;
+
+    border-radius: 25px;
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+}
+
+
+/* =========================================================
+   CATEGORIAS
+========================================================= */
+
+.categorias {
+
+    padding: 75px 0 90px;
+
+    background: #ffffff;
+}
+
+
+/* TÍTULO DA SEÇÃO */
+
+.titulo-secao {
+
+    text-align: center;
+
+    margin-bottom: 55px;
+}
+
+.titulo-secao > span {
+
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--rosa);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+.titulo-secao h2 {
+
+    margin-bottom: 15px;
+
+    color: var(--marrom);
+
+    font-size: 42px;
+
+    line-height: 1.15;
+}
+
+.titulo-secao p {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #666;
+
+    font-size: 17px;
+
+    line-height: 1.6;
+}
+
+
+/* CARDS */
+
+.cards {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+
+.card {
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    text-decoration: none;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.card:hover {
+
+    transform: translateY(-8px);
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+.card > img {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+.card-conteudo {
+
+    padding: 24px 25px 28px;
+}
+
+.card h3 {
+
+    margin-bottom: 10px;
+
+    color: var(--marrom);
+
+    font-size: 21px;
+}
+
+.card p {
+
+    color: #666;
+
+    font-size: 16px;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   QUEM SOMOS
+========================================================= */
+
+.quem-somos {
+
+    padding: 90px 0 100px;
+
+    background: var(--fundo);
+}
+
+.quem-somos .titulo-secao {
+
+    max-width: 750px;
+
+    margin: 0 auto;
+}
+
+.quem-somos .titulo-secao h2 {
+
+    margin-bottom: 20px;
+}
+
+.quem-somos .titulo-secao p {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   RODAPÉ
+========================================================= */
+
+.site-footer {
+
+    background: var(--footer);
+
+    color: #ffffff;
+}
+
+.footer-grid {
+
+    min-height: 300px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+    padding: 55px 0;
+}
+
+
+/* MARCA */
+
+.footer-logo {
+
+    width: 150px;
+
+    margin-bottom: 25px;
+}
+
+.footer-marca p {
+
+    max-width: 480px;
+
+    color: #ffffff;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* CONTATO */
+
+.footer-contato {
+
+    text-align: right;
+}
+
+.footer-contato h3 {
+
+    margin-bottom: 25px;
+
+    color: #ffffff;
+
+    font-size: 28px;
+}
+
+.footer-contato a {
+
+    display: block;
+
+    margin: 14px 0;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    transition: color 0.25s ease;
+}
+
+.footer-contato a:hover {
+
+    color: var(--marrom);
+}
+
+
+/* BASE DO RODAPÉ */
+
+.footer-bottom {
+
+    border-top: 1px solid rgba(255, 255, 255, 0.35);
+
+    padding: 22px 20px;
+
+    text-align: center;
+}
+
+.footer-bottom p {
+
+    color: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .header-inner {
+
+        min-height: 100px;
+    }
+
+    .logo-site {
+
+        width: 190px;
+    }
+
+    .menu {
+
+        gap: 25px;
+    }
+
+    .hero-grid {
+
+        gap: 40px;
+    }
+
+    .hero h1 {
+
+        font-size: 46px;
+    }
+
+    .hero-text p {
+
+        font-size: 18px;
+    }
+
+    .cards {
+
+        gap: 20px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .container {
+
+        width: 90%;
+    }
+
+
+    /* HEADER */
+
+    .header-inner {
+
+        min-height: auto;
+
+        padding: 15px 0;
+
+        flex-direction: column;
+
+        gap: 12px;
+    }
+
+    .logo-site {
+
+        width: 180px;
+    }
+
+    .menu {
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 22px;
+    }
+
+    .menu a {
+
+        font-size: 15px;
+    }
+
+
+    /* HERO */
+
+    .hero {
+
+        padding: 40px 0 50px;
+    }
+
+    .hero-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+    }
+
+    .hero-text {
+
+        text-align: center;
+    }
+
+    .subtitulo {
+
+        margin-bottom: 15px;
+    }
+
+    .hero h1 {
+
+        font-size: 39px;
+
+        line-height: 1.1;
+    }
+
+    .hero-text p {
+
+        margin-right: auto;
+        margin-left: auto;
+
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+    .hero-image {
+
+        order: 2;
+    }
+
+
+    /* CATEGORIAS */
+
+    .categorias {
+
+        padding: 60px 0 70px;
+    }
+
+    .titulo-secao {
+
+        margin-bottom: 40px;
+    }
+
+    .titulo-secao h2 {
+
+        font-size: 34px;
+    }
+
+    .titulo-secao p {
+
+        font-size: 16px;
+    }
+
+    .cards {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .card-conteudo {
+
+        padding: 20px 22px 25px;
+    }
+
+
+    /* QUEM SOMOS */
+
+    .quem-somos {
+
+        padding: 65px 0 75px;
+    }
+
+    .quem-somos .titulo-secao h2 {
+
+        font-size: 34px;
+    }
+
+
+    /* FOOTER */
+
+    .footer-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+        padding: 50px 0;
+
+        text-align: center;
+    }
+
+    .footer-logo {
+
+        width: 145px;
+
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .footer-marca p {
+
+        margin: 0 auto;
+
+        font-size: 16px;
+    }
+
+    .footer-contato {
+
+        text-align: center;
+    }
+
+    .footer-contato h3 {
+
+        font-size: 26px;
+    }
+
+    .footer-contato a {
+
+        font-size: 16px;
+    }
+
+}
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+@media (max-width: 420px) {
+
+    .logo-site {
+
+        width: 165px;
+    }
+
+    .menu {
+
+        gap: 15px;
+    }
+
+    .menu a {
+
+        font-size: 14px;
+    }
+
+    .hero h1 {
+
+        font-size: 34px;
+    }
+
+    .hero-text p {
+
+        font-size: 16px;
+    }
+
+    .botao {
+
+        padding: 15px 30px;
+    }
+
+    .titulo-secao h2 {
+
+        font-size: 31px;
+    }
+
+}
+
+/* =========================================================
+   PÁGINA DE PRODUTOS
+   CADERNOS
+========================================================= */
+
+
+/* =========================================================
+   CABEÇALHO DA PÁGINA
+========================================================= */
+
+.pagina-produtos {
+
+    padding: 75px 0 100px;
+
+    background: var(--fundo);
+}
+
+
+.pagina-produtos-titulo {
+
+    max-width: 750px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+}
+
+
+.pagina-produtos-titulo > span {
+
+    display: block;
+
+    margin-bottom: 14px;
+
+    color: var(--rosa);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.pagina-produtos-titulo h1 {
+
+    margin-bottom: 18px;
+
+    color: var(--marrom);
+
+    font-size: 52px;
+
+    line-height: 1.1;
+}
+
+
+.pagina-produtos-titulo p {
+
+    max-width: 650px;
+
+    margin: 0 auto;
+
+    color: #666;
+
+    font-size: 18px;
+
+    line-height: 1.65;
+}
+
+
+
+/* =========================================================
+   GRID DE PRODUTOS
+========================================================= */
+
+.produtos-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 35px;
+}
+
+
+
+/* =========================================================
+   CARD DO PRODUTO
+========================================================= */
+
+.produto-card {
+
+    overflow: hidden;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    text-decoration: none;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.produto-card:hover {
+
+    transform: translateY(-7px);
+
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+}
+
+
+
+/* =========================================================
+   IMAGEM
+========================================================= */
+
+.produto-imagem {
+
+    width: 100%;
+
+    background: #f5f1ef;
+
+    overflow: hidden;
+}
+
+
+.produto-imagem img {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+
+    transition: transform 0.4s ease;
+}
+
+
+.produto-card:hover .produto-imagem img {
+
+    transform: scale(1.03);
+}
+
+
+
+/* =========================================================
+   INFORMAÇÕES
+========================================================= */
+
+.produto-info {
+
+    padding: 27px 30px 30px;
+}
+
+
+.produto-info h2 {
+
+    margin-bottom: 10px;
+
+    color: var(--marrom);
+
+    font-size: 25px;
+
+    line-height: 1.2;
+}
+
+
+.produto-info p {
+
+    max-width: 500px;
+
+    margin-bottom: 20px;
+
+    color: #666;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+}
+
+
+.produto-link {
+
+    color: var(--marrom);
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .pagina-produtos {
+
+        padding: 60px 0 75px;
+    }
+
+
+    .pagina-produtos-titulo {
+
+        margin-bottom: 45px;
+    }
+
+
+    .pagina-produtos-titulo h1 {
+
+        font-size: 44px;
+    }
+
+
+    .produtos-grid {
+
+        gap: 25px;
+    }
+
+
+    .produto-info {
+
+        padding: 23px 24px 26px;
+    }
+
+
+    .produto-info h2 {
+
+        font-size: 22px;
+    }
+
+}
+
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .pagina-produtos {
+
+        padding: 45px 0 60px;
+    }
+
+
+    .pagina-produtos-titulo {
+
+        margin-bottom: 35px;
+    }
+
+
+    .pagina-produtos-titulo h1 {
+
+        font-size: 38px;
+    }
+
+
+    .pagina-produtos-titulo p {
+
+        font-size: 16px;
+    }
+
+
+    .produtos-grid {
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+
+    .produto-info {
+
+        padding: 22px 23px 25px;
+    }
+
+
+    .produto-info h2 {
+
+        font-size: 22px;
+    }
+
+
+    .produto-info p {
+
+        font-size: 15px;
+    }
+
+}
+
+/* =========================================================
+   PÁGINA INDIVIDUAL DO PRODUTO
+========================================================= */
+
+.produto-pagina {
+
+    padding: 70px 0 100px;
+
+    background: var(--fundo);
+}
+
+
+.produto-layout {
+
+    display: grid;
+
+    grid-template-columns: 1.05fr 0.95fr;
+
+    gap: 70px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   GALERIA
+========================================================= */
+
+.produto-galeria {
+
+    position: sticky;
+
+    top: 30px;
+}
+
+
+.produto-imagem-principal {
+
+    overflow: hidden;
+
+    background: #ffffff;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+
+.produto-imagem-principal img {
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+
+.produto-miniaturas {
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 15px;
+}
+
+
+.miniatura {
+
+    width: 82px;
+
+    height: 82px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    border: 2px solid transparent;
+
+    border-radius: 12px;
+
+    background: #ffffff;
+
+    cursor: pointer;
+}
+
+
+.miniatura img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+}
+
+
+.miniatura.ativa {
+
+    border-color: var(--rosa);
+}
+
+
+
+/* =========================================================
+   CONFIGURAÇÃO
+========================================================= */
+
+.produto-configuracao {
+
+    background: #ffffff;
+
+    padding: 38px;
+
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.06);
+}
+
+
+.produto-categoria {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--rosa);
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.produto-configuracao h1 {
+
+    margin-bottom: 18px;
+
+    color: var(--marrom);
+
+    font-size: 42px;
+
+    line-height: 1.1;
+}
+
+
+.produto-descricao {
+
+    margin-bottom: 28px;
+
+    color: #666;
+
+    font-size: 17px;
+
+    line-height: 1.65;
+}
+
+
+
+/* =========================================================
+   PREÇO
+========================================================= */
+
+.produto-preco-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 30px;
+
+    border-radius: 16px;
+
+    background: #faf5f3;
+}
+
+
+.produto-preco-box span {
+
+    color: #666;
+
+    font-size: 15px;
+}
+
+
+.produto-preco-box strong {
+
+    color: var(--marrom);
+
+    font-size: 25px;
+}
+
+
+
+/* =========================================================
+   OPÇÕES
+========================================================= */
+
+.opcao-produto {
+
+    margin-bottom: 28px;
+}
+
+
+.opcao-produto > label {
+
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--texto);
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+
+.opcao-produto > label b {
+
+    color: var(--rosa);
+}
+
+
+.opcoes {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.opcao {
+
+    min-height: 44px;
+
+    padding: 9px 18px;
+
+    border: 1px solid #dfd2ce;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: var(--texto);
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.opcao:hover {
+
+    border-color: var(--rosa);
+}
+
+
+.opcao.selecionada {
+
+    border-color: var(--marrom);
+
+    background: var(--marrom);
+
+    color: #ffffff;
+}
+
+
+
+/* =========================================================
+   CAPAS
+========================================================= */
+
+.ajuda-opcao {
+
+    margin: -4px 0 16px;
+
+    color: #777;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.capas-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+
+.capa-opcao {
+
+    position: relative;
+
+    display: block;
+
+    cursor: pointer;
+}
+
+
+.capa-opcao input {
+
+    position: absolute;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+.capa-opcao span {
+
+    display: block;
+
+    overflow: hidden;
+
+    border: 2px solid transparent;
+
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.capa-opcao img {
+
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    object-fit: cover;
+}
+
+
+.capa-opcao small {
+
+    display: block;
+
+    padding-top: 5px;
+
+    color: #666;
+
+    text-align: center;
+
+    font-size: 11px;
+}
+
+
+.capa-opcao:hover span {
+
+    border-color: var(--rosa);
+
+    transform: translateY(-2px);
+}
+
+
+.capa-opcao input:checked + span {
+
+    border-color: var(--marrom);
+
+    box-shadow:
+        0 0 0 2px var(--marrom);
+}
+
+
+
+/* =========================================================
+   FRETE
+========================================================= */
+
+.frete-box {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 17px 20px;
+
+    margin-top: 10px;
+
+    margin-bottom: 15px;
+
+    border-radius: 14px;
+
+    background: #f7f5f4;
+}
+
+
+.frete-box span {
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+.frete-box strong {
+
+    color: var(--marrom);
+
+    font-size: 14px;
+}
+
+
+
+/* =========================================================
+   TOTAL
+========================================================= */
+
+.total-box {
+
+    padding: 20px 0;
+
+    border-top: 1px solid #ece5e2;
+
+    border-bottom: 1px solid #ece5e2;
+
+    margin-bottom: 25px;
+}
+
+
+.total-box span {
+
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+.total-box strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: var(--marrom);
+
+    font-size: 30px;
+}
+
+
+.total-box small {
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+
+/* =========================================================
+   BOTÃO WHATSAPP
+========================================================= */
+
+.botao-whatsapp {
+
+    width: 100%;
+
+    border: 0;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    font-size: 16px;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .produto-layout {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+    }
+
+
+    .produto-galeria {
+
+        position: static;
+    }
+
+
+    .produto-configuracao {
+
+        padding: 30px;
+    }
+
+}
+
+
+
+/* =========================================================
+   CELULAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .produto-pagina {
+
+        padding: 40px 0 65px;
+    }
+
+
+    .produto-layout {
+
+        gap: 30px;
+    }
+
+
+    .produto-configuracao {
+
+        padding: 24px 20px;
+
+        border-radius: 20px;
+    }
+
+
+    .produto-configuracao h1 {
+
+        font-size: 34px;
+    }
+
+
+    .produto-descricao {
+
+        font-size: 16px;
+    }
+
+
+    .produto-preco-box {
+
+        padding: 16px;
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .produto-preco-box strong {
+
+        font-size: 23px;
+    }
+
+
+    .capas-grid {
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 9px;
+    }
+
+
+    .frete-box {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 5px;
+    }
+
+
+    .miniatura {
+
+        width: 70px;
+
+        height: 70px;
+    }
+
+}
+
+.pagina-agendas .produtos-grid {
+    grid-template-columns: repeat(2, 300px);
+    gap: 25px;
+    justify-content: center;
+    align-items: start;
+}
+
+.pagina-agendas .produto-imagem img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
