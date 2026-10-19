@@ -1,0 +1,669 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Vale Presente | SerennA Papelaria</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .voucher-pagina {
+            background: var(--fundo, #faf7f4);
+            padding: 45px 0 80px;
+        }
+
+        .voucher-container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .voucher-breadcrumb {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .voucher-breadcrumb a {
+            color: var(--marrom, #684c40);
+            text-decoration: none;
+        }
+
+        .voucher-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 45px;
+            align-items: start;
+        }
+
+        .voucher-galeria {
+            min-width: 0;
+        }
+
+        .voucher-imagem {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,.07);
+        }
+
+        .voucher-imagem img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .voucher-info {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 12px 35px rgba(0,0,0,.05);
+        }
+
+        .voucher-categoria {
+            display: block;
+            color: var(--rosa, #d9a0a0);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .voucher-info h1 {
+            color: var(--marrom, #684c40);
+            font-size: 32px;
+            line-height: 1.2;
+            margin: 0 0 14px;
+        }
+
+        .voucher-descricao {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .voucher-preco {
+            color: var(--marrom, #684c40);
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 22px;
+        }
+
+        .voucher-opcao-titulo {
+            display: block;
+            color: var(--marrom, #684c40);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .voucher-valores {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 10px;
+            margin-bottom: 28px;
+        }
+
+        .voucher-valor {
+            padding: 13px 5px;
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+            background: white;
+            color: var(--marrom, #684c40);
+            font-family: inherit;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .voucher-valor:hover {
+            border-color: var(--rosa, #d9a0a0);
+        }
+
+        .voucher-valor.ativo {
+            background: var(--marrom, #684c40);
+            border-color: var(--marrom, #684c40);
+            color: white;
+        }
+
+        .voucher-campo-grupo {
+            margin-bottom: 20px;
+        }
+
+        .voucher-campo-grupo label {
+            display: block;
+            color: var(--marrom, #684c40);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 9px;
+        }
+
+        .voucher-campo {
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--texto, #444);
+            background: white;
+            outline: none;
+        }
+
+        .voucher-campo:focus {
+            border-color: var(--rosa, #d9a0a0);
+        }
+
+        .voucher-campo::placeholder {
+            color: #aaa;
+        }
+
+        .voucher-aviso {
+            background: #faf5f1;
+            border-radius: 12px;
+            padding: 16px;
+            margin: 25px 0;
+            color: #66574f;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .voucher-aviso strong {
+            color: var(--marrom, #684c40);
+        }
+
+        .voucher-whatsapp {
+            width: 100%;
+            border: none;
+            background: var(--marrom, #684c40);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .voucher-whatsapp:hover {
+            background: var(--rosa, #d9a0a0);
+            color: var(--marrom, #684c40);
+        }
+
+        .voucher-nota {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 12px;
+            line-height: 1.6;
+        }
+
+        .voucher-regras {
+            margin-top: 45px;
+            padding: 28px;
+            border-radius: 18px;
+            background: white;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .voucher-regras h2 {
+            color: var(--marrom, #684c40);
+            font-size: 23px;
+            margin-top: 0;
+        }
+
+        .voucher-regras ul {
+            padding-left: 22px;
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 800px) {
+            .voucher-layout {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .voucher-info {
+                padding: 25px;
+            }
+
+            .voucher-imagem {
+                max-width: 600px;
+                margin: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .voucher-pagina {
+                padding: 25px 0 55px;
+            }
+
+            .voucher-breadcrumb {
+                font-size: 12px;
+                margin-bottom: 18px;
+            }
+
+            .voucher-info h1 {
+                font-size: 28px;
+            }
+
+            .voucher-preco {
+                font-size: 26px;
+            }
+
+            .voucher-valores {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="site-header">
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+            </a>
+
+            <nav class="menu">
+                <a href="cadernos.html">Cadernos</a>
+                <a href="planners.html">Planners</a>
+                <a href="agendas.html">Agendas</a>
+                <a href="vale-presente.html">Vale Presente</a>
+            </nav>
+
+        </div>
+    </header>
+
+
+    <!-- VALE PRESENTE -->
+
+    <main class="voucher-pagina">
+
+        <div class="voucher-container">
+
+            <div class="voucher-breadcrumb">
+                <a href="index.html">Início</a>
+                <span>›</span>
+                <span>Vale Presente</span>
+            </div>
+
+            <div class="voucher-layout">
+
+                <!-- IMAGEM -->
+
+                <div class="voucher-galeria">
+
+                    <div class="voucher-imagem">
+                        <img
+                            id="voucherImagem"
+                            src="assets/img/produtos/vale%20presente/30.jpg"
+                            alt="Vale Presente SerennA de R$ 30,00"
+                        >
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES E COMPRA -->
+
+                <div class="voucher-info">
+
+                    <span class="voucher-categoria">
+                        Presenteie com carinho
+                    </span>
+
+                    <h1>Vale Presente SerennA</h1>
+
+                    <p class="voucher-descricao">
+                        Um presente delicado para quem ama papelaria.
+                        Escolha o valor e personalize seu voucher
+                        com o nome de quem presenteia e de quem recebe.
+                    </p>
+
+                    <div class="voucher-preco" id="voucherPreco">
+                        R$ 30,00
+                    </div>
+
+
+                    <!-- VALORES -->
+
+                    <span class="voucher-opcao-titulo">
+                        Escolha o valor do seu voucher *
+                    </span>
+
+                    <div class="voucher-valores">
+
+                        <button
+                            type="button"
+                            class="voucher-valor ativo"
+                            data-valor="30"
+                            aria-pressed="true"
+                            onclick="selecionarValor(30, this)"
+                        >
+                            R$ 30,00
+                        </button>
+
+                        <button
+                            type="button"
+                            class="voucher-valor"
+                            data-valor="50"
+                            aria-pressed="false"
+                            onclick="selecionarValor(50, this)"
+                        >
+                            R$ 50,00
+                        </button>
+
+                        <button
+                            type="button"
+                            class="voucher-valor"
+                            data-valor="100"
+                            aria-pressed="false"
+                            onclick="selecionarValor(100, this)"
+                        >
+                            R$ 100,00
+                        </button>
+
+                        <button
+                            type="button"
+                            class="voucher-valor"
+                            data-valor="150"
+                            aria-pressed="false"
+                            onclick="selecionarValor(150, this)"
+                        >
+                            R$ 150,00
+                        </button>
+
+                        <button
+                            type="button"
+                            class="voucher-valor"
+                            data-valor="200"
+                            aria-pressed="false"
+                            onclick="selecionarValor(200, this)"
+                        >
+                            R$ 200,00
+                        </button>
+
+                    </div>
+
+
+                    <!-- DE -->
+
+                    <div class="voucher-campo-grupo">
+
+                        <label for="voucherDe">
+                            De: *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="voucherDe"
+                            class="voucher-campo"
+                            maxlength="60"
+                            placeholder="Nome de quem está presenteando"
+                            autocomplete="name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- PARA -->
+
+                    <div class="voucher-campo-grupo">
+
+                        <label for="voucherPara">
+                            Para: *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="voucherPara"
+                            class="voucher-campo"
+                            maxlength="60"
+                            placeholder="Nome de quem receberá o presente"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="voucher-aviso">
+
+                        <strong>Como funciona?</strong><br>
+
+                        Após a confirmação da compra, a SerennA
+                        preparará seu voucher numerado e preenchido
+                        com os nomes informados.
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="voucher-whatsapp"
+                        onclick="comprarVoucher()"
+                    >
+                        Solicitar vale presente pelo WhatsApp
+                    </button>
+
+                    <p class="voucher-nota">
+                        Você será direcionado ao WhatsApp para
+                        confirmar o pedido e receber as orientações
+                        para pagamento.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- REGRAS DO RESGATE -->
+
+            <section class="voucher-regras">
+
+                <h2>Como utilizar o vale presente</h2>
+
+                <ul>
+                    <li>
+                        Escolha os produtos desejados no catálogo
+                        da SerennA.
+                    </li>
+
+                    <li>
+                        Envie seu pedido pelo WhatsApp, informando
+                        que utilizará um vale presente.
+                    </li>
+
+                    <li>
+                        O frete será calculado posteriormente,
+                        de acordo com o endereço de entrega.
+                    </li>
+
+                    <li>
+                        Se o total dos produtos ultrapassar o
+                        valor do voucher, a diferença deverá ser
+                        complementada via Pix.
+                    </li>
+
+                    <li>
+                        A utilização do voucher será confirmada
+                        pelo atendimento da SerennA.
+                    </li>
+                </ul>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-info">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+            <div class="footer-contato">
+
+                <h3>Contato</h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+        let valorVoucher = 30;
+
+        const imagensVoucher = {
+            30: "assets/img/produtos/vale%20presente/30.jpg",
+            50: "assets/img/produtos/vale%20presente/50.jpg",
+            100: "assets/img/produtos/vale%20presente/100.jpg",
+            150: "assets/img/produtos/vale%20presente/150.jpg",
+            200: "assets/img/produtos/vale%20presente/200.jpg"
+        };
+
+        function formatarMoeda(valor) {
+            return valor.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            });
+        }
+
+        function selecionarValor(valor, botao) {
+            valorVoucher = valor;
+
+            document.getElementById("voucherPreco").textContent =
+                formatarMoeda(valor);
+
+            const imagem = document.getElementById("voucherImagem");
+
+            imagem.src = imagensVoucher[valor];
+            imagem.alt =
+                "Vale Presente SerennA de " + formatarMoeda(valor);
+
+            document.querySelectorAll(".voucher-valor").forEach(function(item) {
+                const selecionado = item === botao;
+
+                item.classList.toggle("ativo", selecionado);
+                item.setAttribute("aria-pressed", String(selecionado));
+            });
+        }
+
+        function comprarVoucher() {
+            const de = document.getElementById("voucherDe").value.trim();
+            const para = document.getElementById("voucherPara").value.trim();
+
+            if (!de) {
+                alert("Informe o nome de quem está presenteando.");
+                document.getElementById("voucherDe").focus();
+                return;
+            }
+
+            if (!para) {
+                alert("Informe o nome de quem receberá o presente.");
+                document.getElementById("voucherPara").focus();
+                return;
+            }
+
+            const mensagem =
+`Olá! Gostaria de solicitar a compra de um Vale Presente SerennA.
+
+Valor do voucher: ${formatarMoeda(valorVoucher)}
+De: ${de}
+Para: ${para}
+
+Gostaria de receber as orientações para pagamento e confirmação da compra.
+
+Entendo que, após a confirmação, o voucher será numerado e preenchido com os nomes informados.
+
+Obrigada!`;
+
+            const telefone = "5511994485595";
+
+            const url =
+                "https://wa.me/" + telefone +
+                "?text=" + encodeURIComponent(mensagem);
+
+            window.open(url, "_blank");
+        }
+    </script>
+
+</body>
+</html>
