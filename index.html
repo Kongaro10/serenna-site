@@ -8,6 +8,115 @@
     <title>SerennA | Papelaria Criativa</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .cards > .card {
+            grid-column: span 3;
+        }
+
+        .cards > .card:nth-child(5) {
+            grid-column: 2 / span 3;
+        }
+
+        .cards > .card:nth-child(6) {
+            grid-column: 5 / span 3;
+        }
+
+        .cards > .card:nth-child(7) {
+            grid-column: 8 / span 3;
+        }
+
+        @media (max-width: 900px) {
+            .cards {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+            }
+
+            .cards > .card {
+                grid-column: span 3;
+            }
+
+            .cards > .card:nth-child(7) {
+                grid-column: 2 / span 4;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .cards > .card,
+            .cards > .card:nth-child(5),
+            .cards > .card:nth-child(6),
+            .cards > .card:nth-child(7) {
+                grid-column: 1;
+            }
+        }
+
+        .como-funciona {
+            padding: 80px 0;
+            background-color: #fbf8f5;
+        }
+
+        .etapas-pedido {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .etapa-pedido {
+            padding: 28px 22px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #eee5df;
+            border-radius: 16px;
+        }
+
+        .icone-etapa {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+            color: #8b6f63;
+            background-color: #f5eee9;
+            border-radius: 50%;
+            font-size: 23px;
+        }
+
+        .etapa-pedido h3 {
+            margin: 0 0 12px;
+        }
+
+        .etapa-pedido p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 900px) {
+            .etapas-pedido {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 560px) {
+            .etapas-pedido {
+                grid-template-columns: 1fr;
+            }
+
+            .como-funciona {
+                padding: 56px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -35,6 +144,12 @@
                 <a href="planners.html">Planners</a>
 
                 <a href="agendas.html">Agendas</a>
+
+                <a href="fios-afeto.html">Fios &amp; Afeto</a>
+
+                <a href="pequenos-encantos.html">Pequenos Encantos</a>
+
+                <a href="mini-pets.html">Mini Pets</a>
 
             </nav>
 
@@ -155,6 +270,7 @@
 
                     </a>
 
+
                     <a href="agendas.html" class="card">
 
                         <img
@@ -174,7 +290,8 @@
 
                     </a>
 
-                    <!-- NOVO CARD: VALE PRESENTE -->
+
+                    <!-- CARD: VALE PRESENTE -->
 
                     <a href="vale-presente.html" class="card">
 
@@ -194,6 +311,157 @@
                         </div>
 
                     </a>
+
+
+                    <a href="fios-afeto.html" class="card">
+
+                        <img
+                            src="assets/img/categorias/fios & afeto.jpg"
+                            alt="Fios & Afeto"
+                        >
+
+                        <div class="card-conteudo">
+
+                            <h3>Fios &amp; Afeto</h3>
+
+                            <p>
+                                Fotografias bordadas à mão, feitas com carinho.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="pequenos-encantos.html" class="card">
+
+                        <img
+                            src="assets/img/categorias/pequenos encantos.jpg"
+                            alt="Pequenos Encantos"
+                        >
+
+                        <div class="card-conteudo">
+
+                            <h3>Pequenos Encantos</h3>
+
+                            <p>
+                                Produtos funcionais e personalizados para o seu dia a dia.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+
+                    <a href="mini-pets.html" class="card">
+
+                        <img
+                            src="assets/img/categorias/mini pets.jpg"
+                            alt="Mini Pets personalizados a partir da foto do seu bichinho"
+                        >
+
+                        <div class="card-conteudo">
+
+                            <h3>Mini Pets</h3>
+
+                            <p>
+                                Pets personalizados a partir da foto do seu bichinho.
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMO FUNCIONA O PEDIDO
+        ========================== -->
+
+        <section class="como-funciona">
+
+            <div class="container">
+
+                <div class="titulo-secao">
+
+                    <span>SEU PEDIDO</span>
+
+                    <h2>
+                        Como funciona o pedido
+                    </h2>
+
+                    <p>
+                        Da escolha do produto à entrega, nossa equipe acompanha
+                        cada etapa com você.
+                    </p>
+
+                </div>
+
+
+                <div class="etapas-pedido">
+
+                    <article class="etapa-pedido">
+
+                        <span class="icone-etapa" aria-hidden="true">✿</span>
+
+                        <h3>Escolha e personalize</h3>
+
+                        <p>
+                            Escolha o produto, selecione as opções de
+                            personalização e informe seu CEP.
+                        </p>
+
+                    </article>
+
+
+                    <article class="etapa-pedido">
+
+                        <span class="icone-etapa" aria-hidden="true">♡</span>
+
+                        <h3>Converse pelo WhatsApp</h3>
+
+                        <p>
+                            As informações do pedido seguem pelo WhatsApp.
+                            Nosso atendimento humano confirma os detalhes,
+                            calcula o frete e esclarece suas dúvidas.
+                        </p>
+
+                    </article>
+
+
+                    <article class="etapa-pedido">
+
+                        <span class="icone-etapa" aria-hidden="true">R$</span>
+
+                        <h3>Faça o pagamento</h3>
+
+                        <p>
+                            Os valores do site são para pagamento via Pix.
+                            Para pagamento com cartão de crédito, há uma
+                            taxa adicional de 6%.
+                        </p>
+
+                    </article>
+
+
+                    <article class="etapa-pedido">
+
+                        <span class="icone-etapa" aria-hidden="true">✧</span>
+
+                        <h3>Produção e entrega</h3>
+
+                        <p>
+                            O prazo de produção é de 10 dias úteis após a
+                            confirmação do pagamento. O prazo de entrega
+                            depende do frete escolhido.
+                        </p>
+
+                    </article>
 
                 </div>
 

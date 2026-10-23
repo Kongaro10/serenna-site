@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SerennA | Foto Bordada à Mão</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .produto-pagina {
+            background: var(--fundo);
+            padding: 45px 0 80px;
+        }
+
+        .produto-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .breadcrumb a {
+            color: var(--marrom);
+            text-decoration: none;
+        }
+
+        .produto-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .galeria {
+            min-width: 0;
+        }
+
+        .imagem-principal {
+            width: 100%;
+            max-width: 620px;
+            aspect-ratio: 1 / 1;
+            margin: auto;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+        }
+
+        .imagem-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .miniaturas {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .miniatura {
+            flex: 0 0 78px;
+            height: 78px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .miniatura.ativa {
+            border-color: var(--rosa);
+        }
+
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .produto-info {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .06);
+        }
+
+        .produto-categoria {
+            display: block;
+            color: var(--rosa);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .produto-info h1 {
+            font-size: 36px;
+            line-height: 1.15;
+            color: var(--marrom);
+            margin: 0 0 12px;
+        }
+
+        .produto-descricao {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+
+        .produto-preco {
+            font-size: 27px;
+            font-weight: 700;
+            color: var(--marrom);
+            margin: 22px 0 5px;
+        }
+
+        .frete-aviso {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .caracteristicas {
+            margin-bottom: 25px;
+        }
+
+        .caracteristica {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 11px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .caracteristica strong {
+            color: var(--marrom);
+        }
+
+        .caracteristica span {
+            color: #666;
+            text-align: right;
+        }
+
+        .opcao {
+            margin-bottom: 25px;
+        }
+
+        .opcao-titulo {
+            display: block;
+            color: var(--marrom);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .opcao-subtexto {
+            display: block;
+            color: #777;
+            font-size: 13px;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        .opcoes-botoes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .opcao-radio {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .opcao-radio + label {
+            display: inline-block;
+            padding: 11px 16px;
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+            background: white;
+            color: var(--marrom);
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .opcao-radio:focus-visible + label {
+            outline: 2px solid var(--rosa);
+            outline-offset: 3px;
+        }
+
+        .opcao-radio:checked + label {
+            background: var(--marrom);
+            border-color: var(--marrom);
+            color: white;
+        }
+
+        .campo {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--texto);
+            outline: none;
+            background: white;
+        }
+
+        .campo:focus {
+            border-color: var(--rosa);
+        }
+
+        .campo::placeholder {
+            color: #aaa;
+        }
+
+        .campo-ajuda {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        .botao-whatsapp {
+            width: 100%;
+            border: none;
+            background: var(--marrom);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .botao-whatsapp:hover {
+            background: var(--rosa);
+            color: var(--marrom);
+        }
+
+        .aviso-pedido {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        .como-encomendar {
+            margin-top: 70px;
+            padding: 42px;
+            background: #fff;
+            border-radius: 22px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .05);
+        }
+
+        .como-encomendar h2 {
+            color: var(--marrom);
+            margin: 0 0 12px;
+        }
+
+        .como-encomendar-intro {
+            color: #666;
+            line-height: 1.7;
+            margin: 0 0 28px;
+        }
+
+        .orientacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 22px 32px;
+        }
+
+        .orientacao h3 {
+            color: var(--marrom);
+            font-size: 17px;
+            margin: 0 0 8px;
+        }
+
+        .orientacao p {
+            color: #666;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .nota-foto {
+            margin-top: 12px;
+            padding: 14px 16px;
+            border-left: 3px solid var(--rosa);
+            background: #fbf8f5;
+            color: #665b56;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 850px) {
+            .produto-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .imagem-principal {
+                max-width: 600px;
+            }
+
+            .produto-info {
+                padding: 25px;
+            }
+
+            .como-encomendar {
+                padding: 30px 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .produto-pagina {
+                padding: 25px 0 55px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+                margin-bottom: 18px;
+            }
+
+            .produto-info h1 {
+                font-size: 28px;
+            }
+
+            .produto-preco {
+                font-size: 24px;
+            }
+
+            .miniatura {
+                flex-basis: 68px;
+                height: 68px;
+            }
+
+            .orientacoes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .como-encomendar {
+                margin-top: 45px;
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+            </a>
+
+            <nav class="menu">
+
+                <a href="cadernos.html">Cadernos</a>
+
+                <a href="planners.html">Planners</a>
+
+                <a href="agendas.html">Agendas</a>
+
+                <a href="fios-afeto.html">Fios &amp; Afeto</a>
+
+                <a href="pequenos-encantos.html">Pequenos Encantos</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- PRODUTO -->
+
+    <main class="produto-pagina">
+
+        <div class="produto-container">
+
+            <div class="breadcrumb">
+                <a href="index.html">Início</a>
+                <span>›</span>
+                <a href="fios-afeto.html">Fios &amp; Afeto</a>
+                <span>›</span>
+                <span>Foto Bordada à Mão</span>
+            </div>
+
+
+            <div class="produto-layout">
+
+                <!-- GALERIA -->
+
+                <div class="galeria">
+
+                    <div class="imagem-principal">
+                        <img
+                            id="imagemPrincipal"
+                            src="assets/img/produtos/fotos/destaque.jpg"
+                            alt="Foto bordada à mão"
+                        >
+                    </div>
+
+                    <div class="miniaturas">
+
+                        <button
+                            type="button"
+                            class="miniatura ativa"
+                            aria-label="Ver imagem principal da foto bordada"
+                            onclick="trocarImagem(this, 'assets/img/produtos/fotos/destaque.jpg', 'Foto bordada à mão')"
+                        >
+                            <img
+                                src="assets/img/produtos/fotos/destaque.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="miniatura"
+                            aria-label="Ver detalhe 1 da foto bordada"
+                            onclick="trocarImagem(this, 'assets/img/produtos/fotos/img 1.jpg', 'Detalhe da foto bordada à mão')"
+                        >
+                            <img
+                                src="assets/img/produtos/fotos/img 1.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="miniatura"
+                            aria-label="Ver detalhe 2 da foto bordada"
+                            onclick="trocarImagem(this, 'assets/img/produtos/fotos/img 2.jpg', 'Detalhe da foto bordada à mão')"
+                        >
+                            <img
+                                src="assets/img/produtos/fotos/img 2.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="miniatura"
+                            aria-label="Ver detalhe 3 da foto bordada"
+                            onclick="trocarImagem(this, 'assets/img/produtos/fotos/img 3.jpg', 'Detalhe da foto bordada à mão')"
+                        >
+                            <img
+                                src="assets/img/produtos/fotos/img 3.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="miniatura"
+                            aria-label="Ver detalhe 4 da foto bordada"
+                            onclick="trocarImagem(this, 'assets/img/produtos/fotos/img 4.jpg', 'Detalhe da foto bordada à mão')"
+                        >
+                            <img
+                                src="assets/img/produtos/fotos/img 4.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO PRODUTO -->
+
+                <section class="produto-info">
+
+                    <span class="produto-categoria">Fios &amp; Afeto</span>
+
+                    <h1>Foto Bordada à Mão</h1>
+
+                    <p class="produto-descricao">
+                        Uma fotografia especial guarda momentos que merecem
+                        ser lembrados. O bordado feito à mão acrescenta cores,
+                        texturas e novos detalhes à imagem, criando uma peça
+                        personalizada que preserva a lembrança e ganha um
+                        toque único.
+                    </p>
+
+                    <p class="produto-descricao">
+                        Cada composição é criada a partir da sua fotografia
+                        e das suas ideias. Escolha o tamanho e compartilhe
+                        suas sugestões para o bordado; a arte é desenvolvida
+                        com cuidado para combinar com a imagem e alcançar um
+                        resultado delicado.
+                    </p>
+
+                    <div class="produto-preco" id="precoProduto">
+                        R$ 69,90
+                    </div>
+
+                    <div class="frete-aviso">
+                        Valor para pagamento via Pix. No cartão de crédito,
+                        há uma taxa adicional de 6%. O frete é calculado
+                        depois, conforme o CEP informado.
+                    </div>
+
+
+                    <div class="caracteristicas">
+
+                        <div class="caracteristica">
+                            <strong>Produção</strong>
+                            <span>Bordado manual</span>
+                        </div>
+
+                        <div class="caracteristica">
+                            <strong>Impressão</strong>
+                            <span>Fotografia impressa</span>
+                        </div>
+
+                        <div class="caracteristica">
+                            <strong>Prazo de produção</strong>
+                            <span>10 dias úteis após confirmação do pagamento</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ESCOLHA DO TAMANHO -->
+
+                    <div class="opcao">
+
+                        <span class="opcao-titulo">Escolha o tamanho da fotografia *</span>
+
+                        <span class="opcao-subtexto">
+                            O valor é atualizado conforme o tamanho escolhido.
+                        </span>
+
+                        <div class="opcoes-botoes">
+
+                            <input
+                                type="radio"
+                                class="opcao-radio"
+                                name="tamanho"
+                                id="tamanho1015"
+                                value="10 x 15 cm"
+                                data-preco="69,90"
+                                checked
+                                onchange="atualizarPreco()"
+                            >
+                            <label for="tamanho1015">10 × 15 cm</label>
+
+                            <input
+                                type="radio"
+                                class="opcao-radio"
+                                name="tamanho"
+                                id="tamanho1420"
+                                value="14 x 20 cm"
+                                data-preco="119,90"
+                                onchange="atualizarPreco()"
+                            >
+                            <label for="tamanho1420">14 × 20 cm</label>
+
+                            <input
+                                type="radio"
+                                class="opcao-radio"
+                                name="tamanho"
+                                id="tamanho1824"
+                                value="18 x 24 cm"
+                                data-preco="189,90"
+                                onchange="atualizarPreco()"
+                            >
+                            <label for="tamanho1824">18 × 24 cm</label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CEP -->
+
+                    <div class="opcao">
+
+                        <label class="opcao-titulo" for="cep">
+                            CEP para cálculo do frete *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cep"
+                            class="campo"
+                            maxlength="9"
+                            inputmode="numeric"
+                            autocomplete="postal-code"
+                            placeholder="00000-000"
+                            oninput="formatarCEP(this)"
+                        >
+
+                        <span class="campo-ajuda">
+                            O frete e os detalhes do pedido serão confirmados
+                            pelo nosso atendimento no WhatsApp.
+                        </span>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="botao-whatsapp"
+                        onclick="enviarWhatsApp()"
+                    >
+                        Encomendar pelo WhatsApp
+                    </button>
+
+                    <p class="aviso-pedido">
+                        A conversa será atendida por uma pessoa da nossa equipe,
+                        que confirmará o frete e os detalhes da sua encomenda.
+                    </p>
+
+                </section>
+
+            </div>
+
+
+            <!-- COMO ENCOMENDAR -->
+
+            <section class="como-encomendar">
+
+                <h2>Como encomendar sua foto bordada</h2>
+
+                <p class="como-encomendar-intro">
+                    Depois de escolher o tamanho, envie sua fotografia e
+                    compartilhe suas preferências pelo WhatsApp. Cada peça é
+                    preparada individualmente, com atenção à imagem e às
+                    possibilidades do bordado manual.
+                </p>
+
+                <div class="orientacoes-grid">
+
+                    <div class="orientacao">
+                        <h3>Escolha uma foto nítida</h3>
+                        <p>
+                            Prefira uma imagem bem iluminada, em foco e com boa
+                            resolução. Fotos desfocadas ou com o rosto muito
+                            próximo, como algumas selfies, podem limitar o
+                            resultado do bordado.
+                        </p>
+                        <div class="nota-foto">
+                            A fotografia será impressa antes de receber o
+                            bordado. Quanto melhor a qualidade da imagem
+                            original, mais bonita e nítida ficará a impressão.
+                        </div>
+                    </div>
+
+                    <div class="orientacao">
+                        <h3>Defina a cor da fotografia</h3>
+                        <p>
+                            Você pode escolher entre manter a foto colorida ou
+                            optar pelo preto e branco, que cria um contraste
+                            especial com as linhas do bordado.
+                        </p>
+                    </div>
+
+                    <div class="orientacao">
+                        <h3>Compartilhe suas ideias para as linhas</h3>
+                        <p>
+                            Você pode sugerir cores e enviar referências. A
+                            escolha final das linhas será feita pela artesã,
+                            considerando a fotografia, suas preferências e a
+                            harmonia da composição.
+                        </p>
+                    </div>
+
+                    <div class="orientacao">
+                        <h3>Inclua uma frase, se desejar</h3>
+                        <p>
+                            Informe o texto e diga se prefere uma fonte
+                            manuscrita ou mais reta. Se tiver uma referência,
+                            envie junto para avaliarmos legibilidade, tamanho,
+                            complexidade e harmonia com a arte.
+                        </p>
+                    </div>
+
+                    <div class="orientacao">
+                        <h3>Sugira elementos para o bordado</h3>
+                        <p>
+                            Flores, corações, detalhes da própria fotografia,
+                            palavras ou frases podem servir de inspiração.
+                            Suas ideias serão consideradas na criação da peça.
+                        </p>
+                    </div>
+
+                    <div class="orientacao">
+                        <h3>Uma arte criada para a sua fotografia</h3>
+                        <p>
+                            A composição final é definida pela artesã,
+                            respeitando suas sugestões e adaptando os detalhes
+                            para que o bordado tenha um resultado bonito,
+                            legível e adequado à imagem.
+                        </p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+            <div class="footer-contato">
+
+                <h3>Contato</h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+        function trocarImagem(botao, imagem, descricao) {
+            const imagemPrincipal = document.getElementById("imagemPrincipal");
+            imagemPrincipal.src = imagem;
+            imagemPrincipal.alt = descricao;
+
+            document.querySelectorAll(".miniatura").forEach(function (item) {
+                item.classList.remove("ativa");
+            });
+
+            botao.classList.add("ativa");
+        }
+
+        function atualizarPreco() {
+            const tamanho = document.querySelector('input[name="tamanho"]:checked');
+            const preco = tamanho.dataset.preco;
+
+            document.getElementById("precoProduto").textContent = "R$ " + preco;
+        }
+
+        function formatarCEP(campo) {
+            let valor = campo.value.replace(/\D/g, "");
+
+            if (valor.length > 5) {
+                valor = valor.substring(0, 5) + "-" + valor.substring(5, 8);
+            }
+
+            campo.value = valor;
+        }
+
+        function enviarWhatsApp() {
+            const tamanho = document.querySelector('input[name="tamanho"]:checked');
+            const cepCampo = document.getElementById("cep");
+            const cep = cepCampo.value.trim();
+            const cepNumeros = cep.replace(/\D/g, "");
+
+            if (!tamanho) {
+                alert("Escolha o tamanho da fotografia.");
+                return;
+            }
+
+            if (cepNumeros.length !== 8) {
+                alert("Informe um CEP válido para calcularmos o frete.");
+                cepCampo.focus();
+                return;
+            }
+
+            const preco = tamanho.dataset.preco;
+
+            const mensagem = [
+                "Olá! Gostaria de encomendar uma Foto Bordada à Mão.",
+                "",
+                "Tamanho da fotografia: " + tamanho.value,
+                "Valor do produto (Pix): R$ " + preco,
+                "CEP para cálculo do frete: " + cep,
+                "",
+                "Vou enviar por aqui a fotografia escolhida e minhas preferências para o bordado.",
+                "Por favor, me informem o valor do frete e confirmem os detalhes do pedido."
+            ].join("\n");
+
+            const telefone = "5511994485595";
+            const url = "https://wa.me/" + telefone + "?text=" + encodeURIComponent(mensagem);
+
+            window.open(url, "_blank");
+        }
+    </script>
+
+</body>
+
+</html>

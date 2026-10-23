@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Chaveiro com Pompom</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+        .produto-pagina {
+            background: var(--fundo);
+            padding: 45px 0 80px;
+        }
+
+        .produto-container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 28px;
+            font-size: 14px;
+            color: #777;
+        }
+
+        .breadcrumb a {
+            color: var(--marrom);
+            text-decoration: none;
+        }
+
+        .produto-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 55px;
+            align-items: start;
+        }
+
+        .galeria {
+            min-width: 0;
+        }
+
+        .imagem-principal {
+            width: 100%;
+            max-width: 620px;
+            aspect-ratio: 1 / 1;
+            margin: auto;
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .08);
+        }
+
+        .imagem-principal img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .miniaturas {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .miniatura {
+            flex: 0 0 78px;
+            height: 78px;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .miniatura.ativa {
+            border-color: var(--rosa);
+        }
+
+        .miniatura img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .produto-info {
+            background: white;
+            border-radius: 22px;
+            padding: 35px;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, .06);
+        }
+
+        .produto-categoria {
+            display: block;
+            color: var(--rosa);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .produto-info h1 {
+            font-size: 36px;
+            line-height: 1.15;
+            color: var(--marrom);
+            margin: 0 0 12px;
+        }
+
+        .produto-descricao {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .produto-preco {
+            font-size: 27px;
+            font-weight: 700;
+            color: var(--marrom);
+            margin-bottom: 5px;
+        }
+
+        .frete-aviso {
+            font-size: 14px;
+            color: #777;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .caracteristicas {
+            margin-bottom: 28px;
+        }
+
+        .caracteristica {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 11px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .caracteristica strong {
+            color: var(--marrom);
+        }
+
+        .caracteristica span {
+            color: #666;
+            text-align: right;
+        }
+
+        .opcao {
+            margin-bottom: 25px;
+        }
+
+        .opcao-titulo {
+            display: block;
+            color: var(--marrom);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .opcao-subtexto {
+            display: block;
+            color: #777;
+            font-size: 13px;
+            margin-top: -5px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        .cores-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .cor-opcao {
+            position: relative;
+        }
+
+        .cor-opcao input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .cor-opcao label {
+            display: block;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            background: white;
+            transition: .2s;
+        }
+
+        .cor-opcao label img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cor-opcao input:checked + label {
+            border-color: var(--marrom);
+        }
+
+        .cor-opcao input:focus-visible + label {
+            outline: 2px solid var(--rosa);
+            outline-offset: 3px;
+        }
+
+        .nome-cor {
+            display: block;
+            text-align: center;
+            font-size: 12px;
+            padding: 7px 3px;
+            color: var(--marrom);
+        }
+
+        .campo {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #dfcfca;
+            border-radius: 10px;
+            padding: 13px 14px;
+            font-family: inherit;
+            font-size: 15px;
+            color: var(--texto);
+            outline: none;
+            background: white;
+        }
+
+        .campo:focus {
+            border-color: var(--rosa);
+        }
+
+        .campo::placeholder {
+            color: #aaa;
+        }
+
+        .campo-ajuda {
+            display: block;
+            margin-top: 6px;
+            font-size: 12px;
+            color: #888;
+            line-height: 1.5;
+        }
+
+        .botao-whatsapp {
+            width: 100%;
+            border: none;
+            background: var(--marrom);
+            color: white;
+            padding: 16px 20px;
+            border-radius: 50px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .botao-whatsapp:hover {
+            background: var(--rosa);
+            color: var(--marrom);
+        }
+
+        .aviso-pedido {
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+            margin-top: 12px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 850px) {
+            .produto-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .imagem-principal {
+                max-width: 600px;
+            }
+
+            .produto-info {
+                padding: 25px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .produto-pagina {
+                padding: 25px 0 55px;
+            }
+
+            .breadcrumb {
+                font-size: 12px;
+                margin-bottom: 18px;
+            }
+
+            .produto-info h1 {
+                font-size: 28px;
+            }
+
+            .produto-preco {
+                font-size: 24px;
+            }
+
+            .miniatura {
+                flex-basis: 68px;
+                height: 68px;
+            }
+
+            .cores-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cadernos.html">Cadernos</a>
+
+                <a href="planners.html">Planners</a>
+
+                <a href="agendas.html">Agendas</a>
+
+                <a href="fios-afeto.html">Fios &amp; Afeto</a>
+
+                <a href="pequenos-encantos.html">Pequenos Encantos</a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- PRODUTO -->
+
+    <main class="produto-pagina">
+
+        <div class="produto-container">
+
+
+            <!-- CAMINHO -->
+
+            <div class="breadcrumb">
+
+                <a href="index.html">Início</a>
+
+                <span>›</span>
+
+                <a href="pequenos-encantos.html">Pequenos Encantos</a>
+
+                <span>›</span>
+
+                <span>Chaveiro com Pompom</span>
+
+            </div>
+
+
+            <div class="produto-layout">
+
+
+                <!-- GALERIA -->
+
+                <div class="galeria">
+
+                    <div class="imagem-principal">
+
+                        <img
+                            id="imagemPrincipal"
+                            src="assets/img/produtos/encantos/pompom/destaque.jpg"
+                            alt="Chaveiro com Pompom personalizado"
+                        >
+
+                    </div>
+
+
+                    <div class="miniaturas">
+
+                        <button
+                            type="button"
+                            class="miniatura ativa"
+                            aria-label="Ver foto principal do chaveiro com pompom"
+                            onclick="trocarImagem(this, 'assets/img/produtos/encantos/pompom/destaque.jpg', 'Chaveiro com Pompom personalizado')"
+                        >
+                            <img
+                                src="assets/img/produtos/encantos/pompom/destaque.jpg"
+                                alt=""
+                            >
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="miniatura"
+                            aria-label="Ver detalhe do chaveiro com pompom"
+                            onclick="trocarImagem(this, 'assets/img/produtos/encantos/pompom/img 1.jpg', 'Detalhe do Chaveiro com Pompom personalizado')"
+                        >
+                            <img
+                                src="assets/img/produtos/encantos/pompom/img 1.jpg"
+                                alt=""
+                            >
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- INFORMAÇÕES DO PRODUTO -->
+
+                <section class="produto-info">
+
+
+                    <span class="produto-categoria">
+                        Pequenos Encantos
+                    </span>
+
+
+                    <h1>
+                        Chaveiro com Pompom
+                    </h1>
+
+
+                    <p class="produto-descricao">
+                        Um chaveiro macio e delicado, personalizado com o nome
+                        que você escolher. Um pequeno encanto para levar nas
+                        chaves, na bolsa ou na mochila.
+                    </p>
+
+
+                    <div class="produto-preco">
+                        R$ 25,90
+                    </div>
+
+
+                    <div class="frete-aviso">
+                        Valor para pagamento via Pix. Para pagamento com
+                        cartão de crédito, há uma taxa adicional de 6%.
+                        O frete será informado conforme o CEP.
+                    </div>
+
+
+                    <!-- CARACTERÍSTICAS -->
+
+                    <div class="caracteristicas">
+
+                        <div class="caracteristica">
+                            <strong>Tipo</strong>
+                            <span>Chaveiro personalizado</span>
+                        </div>
+
+                        <div class="caracteristica">
+                            <strong>Personalização</strong>
+                            <span>Nome e escolha da cor</span>
+                        </div>
+
+                        <div class="caracteristica">
+                            <strong>Prazo de produção</strong>
+                            <span>10 dias úteis após confirmação do pagamento</span>
+                        </div>
+
+                    </div>
+
+
+                    <!-- ESCOLHA DA COR -->
+
+                    <div class="opcao">
+
+                        <span class="opcao-titulo">
+                            Escolha a cor *
+                        </span>
+
+                        <span class="opcao-subtexto">
+                            Selecione uma das cores disponíveis.
+                        </span>
+
+
+                        <div class="cores-grid">
+
+
+                            <div class="cor-opcao">
+
+                                <input
+                                    type="radio"
+                                    name="cor"
+                                    id="corBranco"
+                                    value="Branco"
+                                    checked
+                                >
+
+                                <label for="corBranco">
+                                    <img
+                                        src="assets/img/cores/branco.jpg"
+                                        alt="Cor branca"
+                                    >
+                                    <span class="nome-cor">Branco</span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="cor-opcao">
+
+                                <input
+                                    type="radio"
+                                    name="cor"
+                                    id="corFurtaCor"
+                                    value="Furta-cor"
+                                >
+
+                                <label for="corFurtaCor">
+                                    <img
+                                        src="assets/img/cores/fruta cor.jpg"
+                                        alt="Cor furta-cor"
+                                    >
+                                    <span class="nome-cor">Furta-cor</span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="cor-opcao">
+
+                                <input
+                                    type="radio"
+                                    name="cor"
+                                    id="corPerolado"
+                                    value="Perolado"
+                                >
+
+                                <label for="corPerolado">
+                                    <img
+                                        src="assets/img/cores/perolado.jpg"
+                                        alt="Cor perolada"
+                                    >
+                                    <span class="nome-cor">Perolado</span>
+                                </label>
+
+                            </div>
+
+
+                            <div class="cor-opcao">
+
+                                <input
+                                    type="radio"
+                                    name="cor"
+                                    id="corRosa"
+                                    value="Rosa"
+                                >
+
+                                <label for="corRosa">
+                                    <img
+                                        src="assets/img/cores/rosa.jpg"
+                                        alt="Cor rosa"
+                                    >
+                                    <span class="nome-cor">Rosa</span>
+                                </label>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- NOME PARA PERSONALIZAÇÃO -->
+
+                    <div class="opcao">
+
+                        <label
+                            class="opcao-titulo"
+                            for="nomePersonalizacao"
+                        >
+                            Nome para personalizar *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nomePersonalizacao"
+                            class="campo"
+                            maxlength="30"
+                            placeholder="Digite o nome"
+                        >
+
+                        <span class="campo-ajuda">
+                            Confira a escrita antes de enviar o pedido.
+                        </span>
+
+                    </div>
+
+
+                    <!-- CEP -->
+
+                    <div class="opcao">
+
+                        <label
+                            class="opcao-titulo"
+                            for="cep"
+                        >
+                            CEP para cálculo do frete *
+                        </label>
+
+                        <input
+                            type="text"
+                            id="cep"
+                            class="campo"
+                            maxlength="9"
+                            inputmode="numeric"
+                            autocomplete="postal-code"
+                            placeholder="00000-000"
+                            oninput="formatarCEP(this)"
+                        >
+
+                        <span class="campo-ajuda">
+                            O valor do frete será confirmado pelo atendimento
+                            no WhatsApp.
+                        </span>
+
+                    </div>
+
+
+                    <!-- BOTÃO WHATSAPP -->
+
+                    <button
+                        type="button"
+                        class="botao-whatsapp"
+                        onclick="enviarWhatsApp()"
+                    >
+                        Pedir pelo WhatsApp
+                    </button>
+
+
+                    <p class="aviso-pedido">
+                        Você será direcionada ao WhatsApp com os detalhes
+                        do produto e do frete.
+                    </p>
+
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+            <div class="footer-contato">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        function trocarImagem(botao, imagem, descricao) {
+
+            const imagemPrincipal =
+                document.getElementById("imagemPrincipal");
+
+            imagemPrincipal.src = imagem;
+            imagemPrincipal.alt = descricao;
+
+            document.querySelectorAll(".miniatura").forEach(function(item) {
+                item.classList.remove("ativa");
+            });
+
+            botao.classList.add("ativa");
+
+        }
+
+
+        function formatarCEP(campo) {
+
+            let valor = campo.value.replace(/\D/g, "");
+
+            if (valor.length > 5) {
+                valor = valor.substring(0, 5) + "-" + valor.substring(5, 8);
+            }
+
+            campo.value = valor;
+
+        }
+
+
+        function enviarWhatsApp() {
+
+            const corSelecionada =
+                document.querySelector('input[name="cor"]:checked');
+
+            const nomeCampo =
+                document.getElementById("nomePersonalizacao");
+
+            const nome =
+                nomeCampo.value.trim();
+
+            const campoCEP =
+                document.getElementById("cep");
+
+            const cep =
+                campoCEP.value.trim();
+
+            const cepNumeros =
+                cep.replace(/\D/g, "");
+
+
+            if (!corSelecionada) {
+                alert("Escolha a cor do chaveiro.");
+                return;
+            }
+
+            if (!nome) {
+                alert("Informe o nome para personalizar o chaveiro.");
+                nomeCampo.focus();
+                return;
+            }
+
+            if (cepNumeros.length !== 8) {
+                alert("Informe um CEP válido para calcularmos o frete.");
+                campoCEP.focus();
+                return;
+            }
+
+
+            const mensagem = [
+                "Olá! Gostaria de pedir um Chaveiro com Pompom.",
+                "",
+                "Nome para personalização: " + nome,
+                "Cor escolhida: " + corSelecionada.value,
+                "CEP para cálculo do frete: " + cep,
+                "",
+                "Valor do produto (Pix): R$ 25,90",
+                "Frete: a informar posteriormente."
+            ].join("\n");
+
+
+            const telefone =
+                "5511994485595";
+
+            const url =
+                "https://wa.me/"
+                + telefone
+                + "?text="
+                + encodeURIComponent(mensagem);
+
+
+            window.open(
+                url,
+                "_blank"
+            );
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

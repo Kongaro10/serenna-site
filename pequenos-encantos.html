@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SerennA | Pequenos Encantos</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+    <!-- =====================================================
+         AJUSTE EXCLUSIVO DA PÁGINA DE PEQUENOS ENCANTOS
+         5 produtos por linha em telas maiores
+    ====================================================== -->
+
+    <style>
+
+        .pagina-encantos .produtos-grid {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 18px;
+        }
+
+
+        .pagina-encantos .produto-imagem img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+
+        /* Tablet */
+
+        @media (max-width: 1100px) {
+
+            .pagina-encantos .produtos-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+
+        }
+
+
+        /* Celular */
+
+        @media (max-width: 700px) {
+
+            .pagina-encantos .produtos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pagina-encantos .produto-imagem img {
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header class="site-header">
+
+        <div class="container header-inner">
+
+            <a href="index.html" class="logo-link">
+
+                <img
+                    src="assets/img/logo/logo-site.png"
+                    alt="SerennA"
+                    class="logo-site"
+                >
+
+            </a>
+
+
+            <nav class="menu">
+
+                <a href="cadernos.html">
+                    Cadernos
+                </a>
+
+                <a href="planners.html">
+                    Planners
+                </a>
+
+                <a href="agendas.html">
+                    Agendas
+                </a>
+
+                <a href="fios-afeto.html">
+                    Fios &amp; Afeto
+                </a>
+
+                <a href="pequenos-encantos.html">
+                    Pequenos Encantos
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <main class="pagina-encantos">
+
+
+        <!-- =========================
+             CABEÇALHO DA PÁGINA
+        ========================== -->
+
+        <section class="pagina-produtos">
+
+            <div class="container">
+
+                <div class="pagina-produtos-titulo">
+
+                    <span>
+                        COLEÇÃO SERENNA
+                    </span>
+
+                    <h1>
+                        Pequenos Encantos
+                    </h1>
+
+                    <p>
+                        Pequenos detalhes que acompanham sua rotina,
+                        combinando praticidade, personalização e carinho
+                        em cada criação.
+                    </p>
+
+                </div>
+
+
+
+                <!-- =========================
+                     PRODUTOS
+                ========================== -->
+
+                <div class="produtos-grid">
+
+
+                    <!-- CHAVEIRO ABRIDOR DE LATAS -->
+
+                    <a
+                        href="chaveiro-abridor-de-latas.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/abridor lata/destaque.jpg"
+                                alt="Chaveiro Abridor de Latas"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Abridor de Latas
+                            </h2>
+
+                            <p>
+                                Praticidade para abrir suas bebidas
+                                e levar sempre com você.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO SUPORTE DE CELULAR -->
+
+                    <a
+                        href="chaveiro-suporte-de-celular.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/chav celular/destaque.jpg"
+                                alt="Chaveiro Suporte de Celular"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Suporte de Celular
+                            </h2>
+
+                            <p>
+                                Um apoio compacto para assistir aos seus
+                                conteúdos com as mãos livres.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO CHECK LIST -->
+
+                    <a
+                        href="chaveiro-check-list.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/chav check list/destaque.jpg"
+                                alt="Chaveiro Check List"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Check List
+                            </h2>
+
+                            <p>
+                                Tenha suas tarefas sempre à mão e marque
+                                cada item concluído.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO COM FOTO -->
+
+                    <a
+                        href="chaveiro-com-foto.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/chav foto/destaque.jpg"
+                                alt="Chaveiro com Foto"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro com Foto
+                            </h2>
+
+                            <p>
+                                Leve uma lembrança especial e quem você ama
+                                sempre por perto.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- PLAQUINHA PARA PERSONALIZAR CADERNO -->
+
+                    <a
+                        href="plaquinha-personalizar-caderno.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/nome elástico/destaque.jpg"
+                                alt="Plaquinha para Personalizar Caderno"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Plaquinha para Personalizar Caderno
+                            </h2>
+
+                            <p>
+                                Um detalhe personalizado para identificar
+                                seu caderno ou agenda.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO NOSSA SENHORA -->
+
+                    <a
+                        href="chaveiro-nossa-senhora.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/nossa snh/destaque.jpg"
+                                alt="Chaveiro Nossa Senhora"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Nossa Senhora
+                            </h2>
+
+                            <p>
+                                Uma lembrança de fé para acompanhar você
+                                todos os dias.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO COM POMPOM -->
+
+                    <a
+                        href="chaveiro-com-pompom.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/pompom/destaque.jpg"
+                                alt="Chaveiro com Pompom"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro com Pompom
+                            </h2>
+
+                            <p>
+                                Um toque macio e delicado para suas chaves,
+                                bolsa ou mochila.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO POTINHO -->
+
+                    <a
+                        href="chaveiro-potinho.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/pote/destaque.jpg"
+                                alt="Chaveiro Potinho"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Potinho
+                            </h2>
+
+                            <p>
+                                Um pequeno recipiente para guardar
+                                comprimidos, joias ou outros itens.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- CHAVEIRO MINI POTINHO -->
+
+                    <a
+                        href="chaveiro-mini-potinho.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/potinho/destaque.jpg"
+                                alt="Chaveiro Mini Potinho"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Chaveiro Mini Potinho
+                            </h2>
+
+                            <p>
+                                Uma versão compacta para manter pequenos
+                                itens sempre por perto.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+
+                    <!-- RÉGUAS CHECK LIST -->
+
+                    <a
+                        href="reguas-check-list.html"
+                        class="produto-card"
+                    >
+
+                        <div class="produto-imagem">
+
+                            <img
+                                src="assets/img/produtos/encantos/reguas/destaque.jpg"
+                                alt="Réguas Check List"
+                            >
+
+                        </div>
+
+
+                        <div class="produto-info">
+
+                            <h2>
+                                Réguas Check List
+                            </h2>
+
+                            <p>
+                                Organize suas tarefas e acompanhe
+                                suas prioridades com praticidade.
+                            </p>
+
+                            <span class="produto-link">
+                                Ver produto →
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+
+            <div class="footer-marca">
+
+                <img
+                    src="assets/img/logo/logo.png"
+                    alt="SerennA"
+                    class="footer-logo"
+                >
+
+                <p>
+                    Papelaria feita para desacelerar.
+                    Criando produtos personalizados que
+                    transformam momentos simples em
+                    experiências especiais.
+                </p>
+
+            </div>
+
+
+
+            <div class="footer-contato">
+
+                <h3>
+                    Contato
+                </h3>
+
+                <a
+                    href="https://wa.me/5511994485595"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    WhatsApp
+                </a>
+
+                <a
+                    href="https://instagram.com/serennapapelaria"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    @serennapapelaria
+                </a>
+
+                <a href="mailto:serennapapelaria@gmail.com">
+                    serennapapelaria@gmail.com
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 SerennA Papelaria · Todos os direitos reservados.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+</body>
+
+</html>
